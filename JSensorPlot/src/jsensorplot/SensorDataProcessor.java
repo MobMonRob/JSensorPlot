@@ -21,75 +21,82 @@ import java.util.regex.Pattern;
 public class SensorDataProcessor {
 
     static final Pattern WHOLE_COORDINATE_FORMAT = Pattern.compile("\\(.+?\\)");
+
     SensorDataReceiver dataReceiver;
     BufferedReader dataReader;
-    CharBuffer dataPointBuffer;
-    String twoOrMoreDataPoints;
+
+    char[] dataReaderBuffer;
+    CharBuffer dataConcatBuffer;
+    String dataParseBuffer;
+
     FakeDataSource fakeDataSource;
-    CharBuffer dataReaderBuffer;
-    boolean DEBUG = false;
+    boolean DEBUG = true;
 
     public SensorDataProcessor() {
         dataReceiver = SensorDataReceiver.createStandardReceiver();
-        dataPointBuffer = CharBuffer.allocate(SensorDataPointParser.MAX_DATA_POINT_STRING_SIZE * 3); //Puffer größer, als was ausgelesen
-        dataReaderBuffer = CharBuffer.allocate(SensorDataPointParser.MAX_DATA_POINT_STRING_SIZE);
-        twoOrMoreDataPoints = "";
+
+        dataReaderBuffer = new char[SensorDataPointParser.MAX_DATA_POINT_STRING_SIZE];
+        dataConcatBuffer = CharBuffer.allocate(SensorDataPointParser.MAX_DATA_POINT_STRING_SIZE * 3);
+        dataParseBuffer = "";
 
         fakeDataSource = new FakeDataSource();
     }
 
     public void init() {
-        dataReader = new BufferedReader(dataReceiver.connect());
-        try {
-            Thread.sleep(20);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(SensorDataProcessor.class.getName()).log(Level.SEVERE, null, ex);
+        if (!DEBUG) {
+            dataReader = new BufferedReader(dataReceiver.connect());
+            try {
+                Thread.sleep(20);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(SensorDataProcessor.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
+
     }
 
     public DataPoint getNextDataPoint() {
         System.out.println("SensorDataProcessor.getNextDataPoint()");
 
         String nextDataPointString = "";
+        dataConcatBuffer.clear();
 
         try {
-            dataPointBuffer.clear();
-            int readCount = 0;
-
-            if (twoOrMoreDataPoints.length() < SensorDataPointParser.MAX_DATA_POINT_STRING_SIZE) {
-                while (readCount < SensorDataPointParser.MAX_DATA_POINT_STRING_SIZE) {
-                    while (!dataReader.ready()) {
-                        Thread.sleep(10);
-                    }
-
-                    int newCharactersReadCount = dataReader.read(dataReaderBuffer.array(), 0, SensorDataPointParser.MAX_DATA_POINT_STRING_SIZE);
-
-                    if (newCharactersReadCount == -1) {
-                        continue;
-                    }
-
-                    dataPointBuffer.append(dataReaderBuffer, 0, newCharactersReadCount);
-                    readCount = readCount + newCharactersReadCount;
-                }
-
-                if (!DEBUG) {
-                    twoOrMoreDataPoints = twoOrMoreDataPoints + String.valueOf(dataPointBuffer.array(), 0, readCount);
+            if (dataParseBuffer.length() < SensorDataPointParser.MAX_DATA_POINT_STRING_SIZE) {
+                if (DEBUG) {
+                    dataParseBuffer = dataParseBuffer + fakeDataSource.getNext();
                 } else {
-                    twoOrMoreDataPoints = twoOrMoreDataPoints + fakeDataSource.getNext();
+                    int readCount = 0;
+
+                    while (readCount < SensorDataPointParser.MAX_DATA_POINT_STRING_SIZE) {
+                        while (!dataReader.ready()) {
+                            Thread.sleep(10);
+                        }
+
+                        int newCharactersReadCount = dataReader.read(dataReaderBuffer, 0, SensorDataPointParser.MAX_DATA_POINT_STRING_SIZE);
+
+                        if (newCharactersReadCount == -1) {
+                            continue;
+                        }
+
+                        dataConcatBuffer.put(dataReaderBuffer, 0, newCharactersReadCount);
+                        readCount = readCount + newCharactersReadCount;
+                    }
+
+                    dataParseBuffer = dataParseBuffer + fakeDataSource.getNext();
                 }
             }
 
-            int len = twoOrMoreDataPoints.length(); //String vermeiden
+            int len = dataParseBuffer.length();
 
-            Matcher wholeCoordinateMatcher = WHOLE_COORDINATE_FORMAT.matcher(twoOrMoreDataPoints);
+            Matcher wholeCoordinateMatcher = WHOLE_COORDINATE_FORMAT.matcher(dataParseBuffer);
             boolean hasFound = wholeCoordinateMatcher.find();
 
             if (!hasFound) {
                 System.out.println("has nothing found!");
             }
 
-            nextDataPointString = twoOrMoreDataPoints.substring(wholeCoordinateMatcher.start(), wholeCoordinateMatcher.end());
-            twoOrMoreDataPoints = twoOrMoreDataPoints.substring(wholeCoordinateMatcher.end(), twoOrMoreDataPoints.length());
+            nextDataPointString = dataParseBuffer.substring(wholeCoordinateMatcher.start(), wholeCoordinateMatcher.end());
+            dataParseBuffer = dataParseBuffer.substring(wholeCoordinateMatcher.end(), dataParseBuffer.length());
 
             if (nextDataPointString.length() > 80) {
                 System.out.println("too big!");
@@ -107,6 +114,5 @@ public class SensorDataProcessor {
         dataPoint = SensorDataPointParser.parse(nextDataPointString, OffsetDateTime.now());
 
         return dataPoint;
-
     }
 }

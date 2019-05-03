@@ -48,7 +48,7 @@ Roboter aus machen</rich_text>
 
 </rich_text>
 	</node>
-	<node custom_icon_id="0" foreground="#ff0000" is_bold="True" name="Aktuell" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179378.83" ts_lastsave="1556882914.32" unique_id="3">
+	<node custom_icon_id="0" foreground="#ff0000" is_bold="True" name="Aktuell" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179378.83" ts_lastsave="1556882902.35" unique_id="3">
 		<rich_text foreground="#ffff00000000" scale="h2">Fragen, ob Mi, Do arbeiten immer
 Mensa!</rich_text>
 		<rich_text>
@@ -71,9 +71,7 @@ Threading weiter machen.
 
 Assertion wieder einschalten
 
-</rich_text>
-		<rich_text foreground="#ffff00000000">Git in der IDE funktionierend machen</rich_text>
-		<rich_text>
+Git in der IDE funktionierend machen
 
 
 </rich_text>
