@@ -51,8 +51,6 @@ public class SensorDataProcessor {
     }
 
     public DataPoint getNextDataPoint() {
-        dataConcatBuffer.clear();
-
         if (!sensorDataPointParser.bufferIsFullEnough()) {
             if (DEBUG) {
                 sensorDataPointParser.addToParseBuffer(fakeDataSource.getNext());
@@ -65,6 +63,7 @@ public class SensorDataProcessor {
     }
 
     private String fetchNextDataPoint() {
+        dataConcatBuffer.clear();
         int readCount = 0;
 
         try {
