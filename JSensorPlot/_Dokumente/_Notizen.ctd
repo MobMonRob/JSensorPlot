@@ -66,7 +66,7 @@ Assertion einschalten: </rich_text>
 
 </rich_text>
 	</node>
-	<node custom_icon_id="0" foreground="#ff0000" is_bold="True" name="Aktuell" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179378.83" ts_lastsave="1557397887.67" unique_id="3">
+	<node custom_icon_id="0" foreground="#ff0000" is_bold="True" name="Aktuell" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179378.83" ts_lastsave="1557398194.49" unique_id="3">
 		<rich_text foreground="#ffff00000000" scale="h2">Fragen, ob Mi, Do arbeiten immer
 Mensa!</rich_text>
 		<rich_text>
@@ -84,7 +84,7 @@ ____________________________
 		<rich_text>
 (11:50-) Style übergeben für Zeit Formatierung
 	//Zeit ausgeben
-	() Differenz in Zeit einbauen
+	(12:35) Differenz in Zeit einbauen
 
 Threading für Visualisierung bauen
 Buttons für Verbinden, ... -&gt; asychnron, Threading!

@@ -5,6 +5,7 @@
  */
 package jsensorplot;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -23,6 +24,7 @@ public class DataPointCoordinatesList {
     public final List<Double> my;
     public final List<Double> mz;
     public final List<Date> timestamp;
+    private Date firstTimestamp;
 
     public DataPointCoordinatesList() {
         fx = new ArrayList();
@@ -51,6 +53,11 @@ public class DataPointCoordinatesList {
         mx.add(dataPoint.mx);
         my.add(dataPoint.my);
         mz.add(dataPoint.mz);
-        timestamp.add(dataPoint.timestamp);
+
+        if (timestamp.isEmpty()) {
+            firstTimestamp = dataPoint.timestamp;
+        }
+
+        timestamp.add(Date.from(Instant.ofEpochMilli(dataPoint.timestamp.getTime() - firstTimestamp.getTime())));
     }
 }
