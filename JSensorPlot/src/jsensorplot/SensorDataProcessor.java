@@ -70,7 +70,7 @@ public class SensorDataProcessor {
         try {
             while (readCount < SensorDataPointParser.MAX_DATA_POINT_STRING_SIZE) {
                 while (!dataReader.ready()) {
-                    Thread.sleep(10);
+                    Thread.sleep(40); //empirically tested optimal duration
                 }
 
                 int newCharactersReadCount = dataReader.read(dataReaderBuffer, 0, SensorDataPointParser.MAX_DATA_POINT_STRING_SIZE);
