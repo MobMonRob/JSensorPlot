@@ -65,7 +65,7 @@ public class SensorDataProcessor {
             }
         }
 
-        return SensorDataPointParser.parse(recognizeNextDataPointString(), OffsetDateTime.now());
+        return SensorDataPointParser.parseDataPoint(splitNextDataPointString(), OffsetDateTime.now());
     }
 
     private void fetchNextDataPoint() {
@@ -96,7 +96,7 @@ public class SensorDataProcessor {
         }
     }
 
-    private String recognizeNextDataPointString() {
+    private String splitNextDataPointString() {
         Matcher wholeCoordinateMatcher = WHOLE_COORDINATE_FORMAT.matcher(dataParseBuffer);
         wholeCoordinateMatcher.find();
         String nextDataPointString = dataParseBuffer.substring(wholeCoordinateMatcher.start(), wholeCoordinateMatcher.end());

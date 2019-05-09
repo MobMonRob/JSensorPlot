@@ -25,7 +25,7 @@ public class SensorDataPointParser {
 
     }
 
-    public static DataPoint parse(String dataPointString, OffsetDateTime now) {
+    public static DataPoint parseDataPoint(String dataPointString, OffsetDateTime now) {
         ArrayList<String> stringCoordinates = new ArrayList();
 
         Matcher coordinateMatcher = COORDINATE_FORMAT.matcher(dataPointString);
