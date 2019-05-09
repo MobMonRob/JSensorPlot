@@ -55,7 +55,6 @@ public class SensorDataProcessor {
     }
 
     public DataPoint getNextDataPoint() {
-        System.out.println("SensorDataProcessor.getNextDataPoint()");
         dataConcatBuffer.clear();
 
         if (dataParseBuffer.length() < SensorDataPointParser.MAX_DATA_POINT_STRING_SIZE) {
@@ -70,7 +69,6 @@ public class SensorDataProcessor {
     }
 
     private void fetchNextDataPoint() {
-        System.out.println("fetchNextDataPoint()");
         int readCount = 0;
 
         try {
@@ -88,12 +86,12 @@ public class SensorDataProcessor {
                 dataConcatBuffer.put(dataReaderBuffer, 0, newCharactersReadCount); //Überträgt nicht
                 readCount = readCount + newCharactersReadCount;
             }
-            
+
             dataConcatBuffer.flip();
             dataParseBuffer = dataParseBuffer + dataConcatBuffer.toString();
         } catch (IOException e) {
             System.err.println("Reading next Characters of the sensor data failed!");
-        } catch (InterruptedException ex) {
+        } catch (InterruptedException e) {
             System.err.println("Interrupted while sleeping!");
         }
     }
