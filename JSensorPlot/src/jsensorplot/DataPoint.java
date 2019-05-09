@@ -6,6 +6,7 @@
 package jsensorplot;
 
 import java.time.OffsetDateTime;
+import java.util.Date;
 
 /**
  *
@@ -19,9 +20,9 @@ public class DataPoint {
     public final double mx;
     public final double my;
     public final double mz;
-    public final OffsetDateTime timestamp;
+    public final Date timestamp;
 
-    public DataPoint(double fx, double fy, double fz, double mx, double my, double mz, OffsetDateTime timestamp) {
+    public DataPoint(double fx, double fy, double fz, double mx, double my, double mz, Date timestamp) {
         this.fx = fx;
         this.fy = fy;
         this.fz = fz;

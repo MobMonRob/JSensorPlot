@@ -6,6 +6,7 @@
 package jsensorplot;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,7 +22,7 @@ public class DataPointCoordinatesList {
     public final List<Double> mx;
     public final List<Double> my;
     public final List<Double> mz;
-    public final List<Integer> timestamp;
+    public final List<Date> timestamp;
 
     public DataPointCoordinatesList() {
         fx = new ArrayList();
@@ -40,10 +41,7 @@ public class DataPointCoordinatesList {
         mx.addAll(dataPoints.stream().map(dataPoint -> dataPoint.mx).collect(Collectors.toList()));
         my.addAll(dataPoints.stream().map(dataPoint -> dataPoint.my).collect(Collectors.toList()));
         mz.addAll(dataPoints.stream().map(dataPoint -> dataPoint.mz).collect(Collectors.toList()));
-
-        for (int i = 0; i < dataPoints.size(); ++i) {
-            timestamp.add(timestamp.size());
-        }
+        timestamp.addAll(dataPoints.stream().map(dataPoint -> dataPoint.timestamp).collect(Collectors.toList()));
     }
 
     public void addDataPoint(DataPoint dataPoint) {
@@ -53,7 +51,6 @@ public class DataPointCoordinatesList {
         mx.add(dataPoint.mx);
         my.add(dataPoint.my);
         mz.add(dataPoint.mz);
-
-        timestamp.add(timestamp.size());
+        timestamp.add(dataPoint.timestamp);
     }
 }

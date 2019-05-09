@@ -5,8 +5,9 @@
  */
 package jsensorplot;
 
-import java.time.OffsetDateTime;
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -32,14 +33,14 @@ final public class SensorDataPointParser {
     }
 
     public DataPoint parseNextDataPoint() {
-        return parseDataPoint(splitNextDataPointString(), OffsetDateTime.now());
+        return parseDataPoint(splitNextDataPointString(), Date.from(Instant.now()));
     }
 
     public boolean bufferIsFullEnough() {
         return dataParseBuffer.length() >= SensorDataPointParser.MAX_DATA_POINT_STRING_SIZE;
     }
 
-    private DataPoint parseDataPoint(String dataPointString, OffsetDateTime now) {
+    private DataPoint parseDataPoint(String dataPointString, Date now) {
         ArrayList<String> stringCoordinates = new ArrayList();
 
         Matcher coordinateMatcher = COORDINATE_FORMAT.matcher(dataPointString);

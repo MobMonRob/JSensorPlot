@@ -5,7 +5,9 @@
  */
 package jsensorplot;
 
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import org.knowm.xchart.*;
 
@@ -20,15 +22,19 @@ public class Plot {
 
     public Plot() {
         chart = new XYChartBuilder().width(800).height(600).title("SensorPlot").xAxisTitle("Time").yAxisTitle("Coordinates").build();
-        List dummy = new ArrayList<Double>();
-        dummy.add(0.0);
+        List yDummy = new ArrayList<Double>();
+        yDummy.add(0.0);
+        List xDummy = new ArrayList<Date>();
+        xDummy.add(Date.from(Instant.now()));
 
-        chart.addSeries​("fx", dummy);
-        chart.addSeries​("fy", dummy);
-        chart.addSeries​("fz", dummy);
-        chart.addSeries​("mx", dummy);
-        chart.addSeries​("my", dummy);
-        chart.addSeries​("mz", dummy);
+        chart.addSeries​("fx", xDummy, yDummy);
+        chart.addSeries​("fy", xDummy, yDummy);
+        chart.addSeries​("fz", xDummy, yDummy);
+        chart.addSeries​("mx", xDummy, yDummy);
+        chart.addSeries​("my", xDummy, yDummy);
+        chart.addSeries​("mz", xDummy, yDummy);
+
+        chart.getStyler().setDatePattern("mm:ss");
 
         wrappedChart = new SwingWrapper(chart);
     }
