@@ -83,7 +83,7 @@ public class SensorDataProcessor {
                     continue;
                 }
 
-                dataConcatBuffer.put(dataReaderBuffer, 0, newCharactersReadCount); //Überträgt nicht
+                dataConcatBuffer.put(dataReaderBuffer, 0, newCharactersReadCount);
                 readCount = readCount + newCharactersReadCount;
             }
 
