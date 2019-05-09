@@ -49,7 +49,7 @@ Assertion einschalten: </rich_text>
 
 </rich_text>
 	</node>
-	<node custom_icon_id="0" foreground="#ff0000" is_bold="True" name="Aktuell" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179378.83" ts_lastsave="1557389797.42" unique_id="3">
+	<node custom_icon_id="0" foreground="#ff0000" is_bold="True" name="Aktuell" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179378.83" ts_lastsave="1557391899.38" unique_id="3">
 		<rich_text foreground="#ffff00000000" scale="h2">Fragen, ob Mi, Do arbeiten immer
 Mensa!</rich_text>
 		<rich_text>
@@ -66,34 +66,11 @@ Bugfix, das Format betreffend mit Alignment, wie es vom Roboter kommt
 (09:05-09:15) //Netbeans Git reparieren
 (-09:25) //Assertion wieder einschalten
 	(-10:00) SensorDataProcessor getNextDataPoint() vernüntig aufteilen
-	Eigene Puffer
-	 getNextDataPoint() besser aufteilen
+	(-10:50) Test ob Puffer besser gehen
 
 
 Socket Event API?
 Threading weiter machen.
-
-
-
-–––
-Eigenen Ringpuffer bauen und dann noch einen, der CharSequence implementiert oder was auch immer gebraucht wird.
-Achtung: muss auch für Array kopieren am Anfang gehen. 
-
-
-Endlicher Ringpuffer. Bulk FIFO. 
-Unendlicher Ringpuffer. Bulk FIFO. 
-Besser: Schlangenpuffer.
-
-Vorne anhängen. Hinten löschen. Alles ansehen.
-
-Daten Import nur per Konstruktor.
-Da dann möglich, welche machen nur zum auslesen, die dann diese Datenstruktur nutzt, ohne in eigenen Speicher zu kopieren.
-Also ein Wrapping.
-..... Nein. Da nur einmal gebraucht besser in der hinzufügen Methode.
-
-Erstens : relative Adressierung zu Start und end Adressen.
-Kopieren, löschen machen.
-–––
 
 
 </rich_text>

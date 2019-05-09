@@ -18,9 +18,9 @@ public class SensorDataReceiver {
     public static final String SENSOR_IP_ADRESS = "192.168.3.2";
     public static final int SENSOR_PORT = 63351;
 
-    final String ipAdress;
-    final int port;
-    Socket socket;
+    private final String ipAdress;
+    private final int port;
+    private Socket socket;
 
     private SensorDataReceiver() {
         this.ipAdress = SENSOR_IP_ADRESS;

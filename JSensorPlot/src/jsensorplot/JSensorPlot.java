@@ -11,8 +11,8 @@ package jsensorplot;
  */
 public class JSensorPlot {
 
-    Plot plot;
-    SensorDataProcessor sensorDataProcessor;
+    private final Plot plot;
+    private final SensorDataProcessor sensorDataProcessor;
 
     /**
      * @param args the command line arguments

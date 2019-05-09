@@ -15,8 +15,8 @@ import org.knowm.xchart.*;
  */
 public class Plot {
 
-    XYChart chart;
-    SwingWrapper wrappedChart;
+    private final XYChart chart;
+    private final SwingWrapper wrappedChart;
 
     public Plot() {
         chart = new XYChartBuilder().width(800).height(600).title("SensorPlot").xAxisTitle("Time").yAxisTitle("Coordinates").build();
