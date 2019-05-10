@@ -9,6 +9,8 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 import org.knowm.xchart.*;
 
 /**
@@ -18,7 +20,7 @@ import org.knowm.xchart.*;
 public class Plot {
 
     private final XYChart chart;
-    private final SwingWrapper wrappedChart;
+    public final JPanel jPanelChart;
 
     public Plot() {
         chart = new XYChartBuilder().width(800).height(600).title("SensorPlot").xAxisTitle("Time").yAxisTitle("Coordinates").build();
@@ -36,7 +38,8 @@ public class Plot {
 
         chart.getStyler().setDatePattern("mm:ss");
 
-        wrappedChart = new SwingWrapper(chart);
+        //wrappedChart = new SwingWrapper(chart);
+        jPanelChart = new XChartPanel(chart);
     }
 
     public void updateDatePointCoordinatesList(DataPointCoordinatesList dataPointCoordinatesList) {
@@ -49,10 +52,10 @@ public class Plot {
     }
 
     public void display() {
-        wrappedChart.displayChart();
+        //wrappedChart.displayChart();
     }
 
     public void repaint() {
-        wrappedChart.repaintChart();
+        //wrappedChart.repaintChart();
     }
 }

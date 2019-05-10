@@ -8,10 +8,13 @@ package jsensorplot;
 import java.io.IOException;
 import jsensorplot.sensordata.SensorDataProcessor;
 import javafx.application.Application;
+import javafx.embed.swing.SwingNode;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
 import javafx.stage.Stage;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -39,9 +42,25 @@ public class JSensorPlot extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("gui/JSensorPlot.fxml"));
+
+        SwingNode swingNode = new SwingNode();
+        createAndSetSwingContent(swingNode);
+        ScrollPane scrollPane = (ScrollPane) root.lookup("plotPane");
+        //Nullpointer Exception -> Findet es nichts mit der Id: "plotPane"???
+        //scrollPane.setContent(swingNode);
+
         primaryStage.setTitle("JSensorPlot");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+    }
+
+    private void createAndSetSwingContent(final SwingNode swingNode) {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                swingNode.setContent(plot.jPanelChart);
+            }
+        });
     }
 
     public void initialize() {

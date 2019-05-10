@@ -9,7 +9,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
+import javafx.scene.input.ScrollEvent;
 
 /**
  * FXML Controller class
@@ -18,16 +18,15 @@ import javafx.scene.control.Label;
  */
 public class JSensorPlotController implements Initializable {
 
-    @FXML
-    private Label label;
-
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        String javaVersion = System.getProperty("java.version");
-        String javafxVersion = System.getProperty("javafx.version");
-        label.setText("Hello, JavaFX " + javafxVersion + "\nRunning on Java " + javaVersion + ".");
+    }
+
+    @FXML
+    private void ShiftArea(ScrollEvent event) {
+        //
     }
 }

@@ -1,19 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jsensorplot.gui.JSensorPlotController">
+<AnchorPane id="AnchorPane" prefHeight="657.0" prefWidth="1027.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jsensorplot.gui.JSensorPlotController">
     <stylesheets>
-        <URL value="@jsensorplot.css"/>
+        <URL value="@jsensorplot.css" />
     </stylesheets>
     <children>
-        <Label fx:id="label" text="Label" />
+        <SplitPane dividerPositions="0.0916030534351145" orientation="VERTICAL" prefHeight="657.0" prefWidth="1027.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <items>
+                <SplitPane dividerPositions="0.4995121951219512, 0.9063414634146342" prefHeight="157.0" prefWidth="1025.0">
+                    <items>
+                        <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="57.0" prefWidth="465.0">
+                            <items>
+                                <Label prefHeight="17.0" prefWidth="147.0" text="Width of the Time Window" />
+                                <Slider showTickLabels="true" showTickMarks="true" />
+                            </items>
+                        </SplitPane>
+                        <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+                            <items>
+                                <Label prefHeight="17.0" prefWidth="147.0" text="Zoom in the Time Window" />
+                                <Slider showTickLabels="true" showTickMarks="true" />
+                            </items>
+                        </SplitPane>
+                        <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+                            <items>
+                                <Label text="Disable Zoom" />
+                                <CheckBox mnemonicParsing="false" text="CheckBox" />
+                            </items>
+                        </SplitPane>
+                    </items>
+                </SplitPane>
+                <ScrollPane fx:id="plotPane" hbarPolicy="ALWAYS" onScroll="#ShiftArea" prefHeight="138.0" prefWidth="334.0" vbarPolicy="NEVER">
+                </ScrollPane>
+            </items>
+        </SplitPane>
     </children>
 </AnchorPane>
