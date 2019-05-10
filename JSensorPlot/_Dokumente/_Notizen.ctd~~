@@ -80,7 +80,7 @@ Assertion einschalten: </rich_text>
 
 </rich_text>
 	</node>
-	<node custom_icon_id="0" foreground="#ff0000" is_bold="True" name="Aktuell" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179378.83" ts_lastsave="1557474375.82" unique_id="3">
+	<node custom_icon_id="0" foreground="#ff0000" is_bold="True" name="Aktuell" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179378.83" ts_lastsave="1557473089.37" unique_id="3">
 		<rich_text foreground="#ffff00000000" scale="h2">Mensa!</rich_text>
 		<rich_text>
 Helfen lassen, wenn etwas nicht funktioniert
@@ -97,9 +97,6 @@ ____________________________
 		<rich_text>
 (09:30) JavaFx für GUI:  </rich_text>
 		<rich_text link="webs https://jaxenter.de/java-tutorial-javafx-53878">https://jaxenter.de/java-tutorial-javafx-53878</rich_text>
-		<rich_text>
-	</rich_text>
-		<rich_text link="webs https://gluonhq.com/products/scene-builder/">https://gluonhq.com/products/scene-builder/</rich_text>
 		<rich_text>
 
 
