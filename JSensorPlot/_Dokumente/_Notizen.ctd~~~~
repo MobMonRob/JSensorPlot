@@ -80,7 +80,7 @@ Assertion einschalten: </rich_text>
 
 </rich_text>
 	</node>
-	<node custom_icon_id="0" foreground="#ff0000" is_bold="True" name="Aktuell" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179378.83" ts_lastsave="1557473073.57" unique_id="3">
+	<node custom_icon_id="0" foreground="#ff0000" is_bold="True" name="Aktuell" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179378.83" ts_lastsave="1557476027.9" unique_id="3">
 		<rich_text foreground="#ffff00000000" scale="h2">Mensa!</rich_text>
 		<rich_text>
 Helfen lassen, wenn etwas nicht funktioniert
@@ -95,8 +95,20 @@ ____________________________
 </rich_text>
 		<rich_text scale="h3" underline="single">Spezifikation</rich_text>
 		<rich_text>
-JavaFx für GUI:  </rich_text>
+(09:30) JavaFx für GUI:  </rich_text>
 		<rich_text link="webs https://jaxenter.de/java-tutorial-javafx-53878">https://jaxenter.de/java-tutorial-javafx-53878</rich_text>
+		<rich_text>
+	</rich_text>
+		<rich_text link="webs https://gluonhq.com/products/scene-builder/">https://gluonhq.com/products/scene-builder/</rich_text>
+		<rich_text>
+	</rich_text>
+		<rich_text link="webs https://openjfx.io/index.html">https://openjfx.io/index.html</rich_text>
+		<rich_text>
+	</rich_text>
+		<rich_text link="webs https://openjfx.io/openjfx-docs/">https://openjfx.io/openjfx-docs/</rich_text>
+		<rich_text> -&gt; JavaFX and Netbeans
+	</rich_text>
+		<rich_text link="webs https://docs.oracle.com/javafx/scenebuilder/1/use_java_ides/sb-with-nb.htm">https://docs.oracle.com/javafx/scenebuilder/1/use_java_ides/sb-with-nb.htm</rich_text>
 		<rich_text>
 
 
@@ -125,12 +137,18 @@ Scrollbar verschiebt Ausschnitt im Plot.
 Deaktiviert Zoom.
 Ganzes letztes Zeitintervall T wird angezeigt.
 
+Plot einbbauen:
+</rich_text>
+		<rich_text link="webs https://docs.oracle.com/javafx/8/embed_swing/jfxpub-embed_swing.htm">https://docs.oracle.com/javafx/8/embed_swing/jfxpub-embed_swing.htm</rich_text>
+		<rich_text>
 
 Threading für Visualisierung bauen
 Buttons für Verbinden, ... -&gt; asychnron, Threading!
 	</rich_text>
 		<rich_text link="webs https://knowm.org/how-to-make-real-time-charts-in-java/">https://knowm.org/how-to-make-real-time-charts-in-java/</rich_text>
 		<rich_text>
+
+Packetierung des Projektes
 
 
 </rich_text>

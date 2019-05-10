@@ -5,11 +5,19 @@
  */
 package jsensorplot;
 
+import java.io.IOException;
+import jsensorplot.sensordata.SensorDataProcessor;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
 /**
  *
  * @author MobMonRob
  */
-public class JSensorPlot {
+public class JSensorPlot extends Application {
 
     private final Plot plot;
     private final SensorDataProcessor sensorDataProcessor;
@@ -17,9 +25,10 @@ public class JSensorPlot {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         JSensorPlot sensorPlot = new JSensorPlot();
-        sensorPlot.init();
+        //sensorPlot.init();
+        launch(args);
     }
 
     public JSensorPlot() {
@@ -27,7 +36,15 @@ public class JSensorPlot {
         sensorDataProcessor = new SensorDataProcessor();
     }
 
-    public void init() {
+    @Override
+    public void start(Stage primaryStage) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("gui/JSensorPlot.fxml"));
+        primaryStage.setTitle("JSensorPlot");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+    }
+
+    public void initialize() {
         plot.display();
         sensorDataProcessor.init();
         this.loop();

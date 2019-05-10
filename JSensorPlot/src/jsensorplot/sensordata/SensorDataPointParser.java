@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package jsensorplot;
+package jsensorplot.sensordata;
 
 import java.time.Instant;
 import java.util.ArrayList;
@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import jsensorplot.DataPoint;
 
 /**
  *
