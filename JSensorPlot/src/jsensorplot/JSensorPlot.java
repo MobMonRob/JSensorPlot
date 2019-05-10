@@ -28,8 +28,6 @@ public class JSensorPlot {
     }
 
     public void init() {
-        System.out.println("SensorPlot.init()");
-
         plot.display();
         sensorDataProcessor.init();
         this.loop();

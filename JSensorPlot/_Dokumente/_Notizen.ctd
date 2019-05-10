@@ -18,7 +18,7 @@ Assertion einschalten: </rich_text>
 
 </rich_text>
 	</node>
-	<node custom_icon_id="0" foreground="" is_bold="False" name="Vergangen" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179371.03" ts_lastsave="1557394561.56" unique_id="2">
+	<node custom_icon_id="0" foreground="" is_bold="False" name="Vergangen" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179371.03" ts_lastsave="1557472240.99" unique_id="2">
 		<rich_text scale="h1" underline="single">Sensor auslesen per Socket in Java</rich_text>
 		<rich_text>
 	//1. Java Socket Client
@@ -64,11 +64,24 @@ Assertion einschalten: </rich_text>
 	//Test ob Puffer besser gehen
 	//Seperation of Concerns verbessern
 
+
+</rich_text>
+		<rich_text scale="h1" underline="single">UI</rich_text>
+		<rich_text>
+</rich_text>
+		<rich_text scale="h2" underline="single">Verbesserte Plot Darstellung</rich_text>
+		<rich_text>
+</rich_text>
+		<rich_text scale="h3" underline="single">Spezifikation</rich_text>
+		<rich_text>
+//Style übergeben für Zeit Formatierung
+	//Zeit ausgeben
+	//Differenz in Zeit einbauen
+
 </rich_text>
 	</node>
-	<node custom_icon_id="0" foreground="#ff0000" is_bold="True" name="Aktuell" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179378.83" ts_lastsave="1557398194.49" unique_id="3">
-		<rich_text foreground="#ffff00000000" scale="h2">Fragen, ob Mi, Do arbeiten immer
-Mensa!</rich_text>
+	<node custom_icon_id="0" foreground="#ff0000" is_bold="True" name="Aktuell" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179378.83" ts_lastsave="1557472255.88" unique_id="3">
+		<rich_text foreground="#ffff00000000" scale="h2">Mensa!</rich_text>
 		<rich_text>
 Helfen lassen, wenn etwas nicht funktioniert
 ____________________________
@@ -82,10 +95,6 @@ ____________________________
 </rich_text>
 		<rich_text scale="h3" underline="single">Spezifikation</rich_text>
 		<rich_text>
-(11:50-) Style übergeben für Zeit Formatierung
-	//Zeit ausgeben
-	(12:35) Differenz in Zeit einbauen
-
 Threading für Visualisierung bauen
 Buttons für Verbinden, ... -&gt; asychnron, Threading!
 	</rich_text>
@@ -95,8 +104,6 @@ Buttons für Verbinden, ... -&gt; asychnron, Threading!
 JavaFx für GUI:  </rich_text>
 		<rich_text link="webs http://jaxcenter.de/java-tutorial-javafx-53878">http://jaxcenter.de/java-tutorial-javafx-53878</rich_text>
 		<rich_text>
-
--&gt;weitere Plot APIs
 
 
 </rich_text>

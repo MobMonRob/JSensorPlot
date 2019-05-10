@@ -39,12 +39,10 @@ public class SensorDataReceiver {
     }
 
     public InputStreamReader connect() {
-        System.out.println("SensorDataReceiver.connect()");
         InputStreamReader socketReader = null;
 
         try {
             socket = new Socket(InetAddress.getByName(ipAdress), port);
-            System.out.println("Connection succeeded!");
             socketReader = new InputStreamReader(socket.getInputStream());
         } catch (IOException e) {
             System.err.println("Connection failed!");
