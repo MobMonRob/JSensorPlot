@@ -27,7 +27,7 @@ public class SensorDataProcessor {
     private final SensorDataPointParser sensorDataPointParser;
 
     private final FakeDataSource fakeDataSource;
-    private static final boolean DEBUG = false;
+    private static final boolean DEBUG = true;
 
     public SensorDataProcessor() {
         dataReceiver = SensorDataReceiver.createStandardReceiver();
@@ -54,7 +54,12 @@ public class SensorDataProcessor {
     public DataPoint getNextDataPoint() {
         if (!sensorDataPointParser.bufferIsFullEnough()) {
             if (DEBUG) {
-                sensorDataPointParser.addToParseBuffer(fakeDataSource.getNext());
+                try {
+                    Thread.sleep(100);
+                    sensorDataPointParser.addToParseBuffer(fakeDataSource.getNext());
+                } catch (InterruptedException e) {
+                    System.err.println("Interrupted while sleeping!");
+                }
             } else {
                 sensorDataPointParser.addToParseBuffer(fetchNextDataPoint());
             }
