@@ -25,7 +25,7 @@ public class Plot {
     private final DataPointCoordinatesList dataPointCoordinatesList;
 
     public Plot() {
-	dataPointCoordinatesList = new DataPointCoordinatesList(10);
+	dataPointCoordinatesList = new DataPointCoordinatesList(5);
 	DataPoint dummyPoint = new DataPoint(0, 0, 0, 0, 0, 0, Date.from(Instant.now()));
 	dataPointCoordinatesList.addDataPoint(dummyPoint);
 

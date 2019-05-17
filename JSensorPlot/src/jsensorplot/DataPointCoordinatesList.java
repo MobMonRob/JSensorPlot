@@ -101,9 +101,9 @@ public class DataPointCoordinatesList {
 
 	while (timestampIterator.hasNext()) {
 	    int nextTimestampIndex = timestampIterator.nextIndex();
-	    long distance = dateDifference(timestampIterator.next(), lastTimestamp).getTime() / 1000;
+	    long distance = (dateDifference(timestampIterator.next(), lastTimestamp).getTime()) / 1000;
 
-	    if (distance <= timeWindowInSeconds) {
+	    if (distance < timeWindowInSeconds) {
 		timestampIndex = nextTimestampIndex;
 		break;
 	    }
