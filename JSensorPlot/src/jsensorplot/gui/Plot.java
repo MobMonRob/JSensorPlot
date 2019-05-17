@@ -5,6 +5,7 @@
  */
 package jsensorplot.gui;
 
+import java.awt.Dimension;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
@@ -34,7 +35,7 @@ public class Plot {
     }
 
     private XYChart initChart() {
-	XYChart newChart = new XYChartBuilder().width(800).height(600).title("SensorPlot").xAxisTitle("Time").yAxisTitle("Coordinates").build();
+	XYChart newChart = new XYChartBuilder().title("SensorPlot").xAxisTitle("Time").yAxisTitle("Coordinates").build();
 
 	newChart.addSeries​("fx", dataPointCoordinatesList.getTimestamp(), dataPointCoordinatesList.getFx());
 	newChart.addSeries​("fy", dataPointCoordinatesList.getTimestamp(), dataPointCoordinatesList.getFy());

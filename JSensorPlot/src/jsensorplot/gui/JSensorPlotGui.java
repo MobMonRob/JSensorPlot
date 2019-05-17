@@ -5,6 +5,7 @@
  */
 package jsensorplot.gui;
 
+import java.awt.Dimension;
 import jsensorplot.DataPointCoordinatesList;
 import jsensorplot.sensordata.SensorDataProcessor;
 
@@ -22,18 +23,18 @@ public class JSensorPlotGui extends javax.swing.JFrame {
      * Creates new form JSensorPlotGui
      */
     public JSensorPlotGui() {
-        sensorDataProcessor = new SensorDataProcessor();
-        plot = new Plot();
-        plotController = new PlotController(sensorDataProcessor, plot);
+	sensorDataProcessor = new SensorDataProcessor();
+	plot = new Plot();
+	plotController = new PlotController(sensorDataProcessor, plot);
 
-        initComponents();
-        myInitComponents();
+	initComponents();
+	myInitComponents();
     }
 
     public void myInitComponents() {
-        jScrollPane1.getViewport().add(plot.jPanelChart);
-        sensorDataProcessor.init();
-        plotController.execute();
+	jScrollPane1.setViewportView(plot.jPanelChart);
+	sensorDataProcessor.init();
+	plotController.execute();
     }
 
     /**
@@ -117,43 +118,43 @@ public class JSensorPlotGui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
-        // TODO add your handling code here:
-        System.out.println(jSlider1.getValue());
+	// TODO add your handling code here:
+	System.out.println(jSlider1.getValue());
     }//GEN-LAST:event_jSlider1StateChanged
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+	/* Set the Nimbus look and feel */
+	//<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+	/* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JSensorPlotGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JSensorPlotGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JSensorPlotGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JSensorPlotGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+	 */
+	try {
+	    for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+		if ("Nimbus".equals(info.getName())) {
+		    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+		    break;
+		}
+	    }
+	} catch (ClassNotFoundException ex) {
+	    java.util.logging.Logger.getLogger(JSensorPlotGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+	} catch (InstantiationException ex) {
+	    java.util.logging.Logger.getLogger(JSensorPlotGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+	} catch (IllegalAccessException ex) {
+	    java.util.logging.Logger.getLogger(JSensorPlotGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+	} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+	    java.util.logging.Logger.getLogger(JSensorPlotGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+	}
+	//</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new JSensorPlotGui().setVisible(true);
-            }
-        });
+	/* Create and display the form */
+	java.awt.EventQueue.invokeLater(new Runnable() {
+	    public void run() {
+		new JSensorPlotGui().setVisible(true);
+	    }
+	});
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
