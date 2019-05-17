@@ -22,40 +22,44 @@ public class Plot {
 
     private final XYChart chart;
     public final JPanel jPanelChart;
+    private final DataPointCoordinatesList dataPointCoordinatesList;
 
     public Plot() {
-	chart = new XYChartBuilder().width(800).height(600).title("SensorPlot").xAxisTitle("Time").yAxisTitle("Coordinates").build();
-	List yDummy = new ArrayList<Double>();
-	yDummy.add(0.0);
-	List xDummy = new ArrayList<Date>();
-	xDummy.add(Date.from(Instant.now()));
+	dataPointCoordinatesList = new DataPointCoordinatesList(10);
+	DataPoint dummyPoint = new DataPoint(0, 0, 0, 0, 0, 0, Date.from(Instant.now()));
+	dataPointCoordinatesList.addDataPoint(dummyPoint);
 
-	chart.addSeries​("fx", xDummy, yDummy);
-	chart.addSeries​("fy", xDummy, yDummy);
-	chart.addSeries​("fz", xDummy, yDummy);
-	chart.addSeries​("mx", xDummy, yDummy);
-	chart.addSeries​("my", xDummy, yDummy);
-	chart.addSeries​("mz", xDummy, yDummy);
-
-	chart.getStyler().setDatePattern("mm:ss");
-
+	chart = initChart();
 	jPanelChart = new XChartPanel(chart);
     }
 
+    private XYChart initChart() {
+	XYChart newChart = new XYChartBuilder().width(800).height(600).title("SensorPlot").xAxisTitle("Time").yAxisTitle("Coordinates").build();
+
+	newChart.addSeries​("fx", dataPointCoordinatesList.getTimestamp(), dataPointCoordinatesList.getFx());
+	newChart.addSeries​("fy", dataPointCoordinatesList.getTimestamp(), dataPointCoordinatesList.getFy());
+	newChart.addSeries​("fz", dataPointCoordinatesList.getTimestamp(), dataPointCoordinatesList.getFz());
+	newChart.addSeries​("mx", dataPointCoordinatesList.getTimestamp(), dataPointCoordinatesList.getMx());
+	newChart.addSeries​("my", dataPointCoordinatesList.getTimestamp(), dataPointCoordinatesList.getMy());
+	newChart.addSeries​("mz", dataPointCoordinatesList.getTimestamp(), dataPointCoordinatesList.getMz());
+
+	newChart.getStyler().setDatePattern("mm:ss");
+
+	return newChart;
+    }
+
     public void addDataPoints(List<DataPoint> dataPoints) {
-	//
+	dataPointCoordinatesList.addDataPoints(dataPoints);
+	updateDataPointCoordinatesList();
+	jPanelChart.repaint();
     }
 
-    public void updateDataPointCoordinatesList(DataPointCoordinatesList dataPointCoordinatesList) {
-	chart.updateXYSeries("fx", dataPointCoordinatesList.timestamp, dataPointCoordinatesList.fx, null);
-	chart.updateXYSeries("fy", dataPointCoordinatesList.timestamp, dataPointCoordinatesList.fy, null);
-	chart.updateXYSeries("fz", dataPointCoordinatesList.timestamp, dataPointCoordinatesList.fz, null);
-	chart.updateXYSeries("mx", dataPointCoordinatesList.timestamp, dataPointCoordinatesList.mx, null);
-	chart.updateXYSeries("my", dataPointCoordinatesList.timestamp, dataPointCoordinatesList.my, null);
-	chart.updateXYSeries("mz", dataPointCoordinatesList.timestamp, dataPointCoordinatesList.mz, null);
-    }
-
-    public void repaint() {
-	//wrappedChart.repaintChart();
+    private void updateDataPointCoordinatesList() {
+	chart.updateXYSeries("fx", dataPointCoordinatesList.getTimestamp(), dataPointCoordinatesList.getFx(), null);
+	chart.updateXYSeries("fy", dataPointCoordinatesList.getTimestamp(), dataPointCoordinatesList.getFy(), null);
+	chart.updateXYSeries("fz", dataPointCoordinatesList.getTimestamp(), dataPointCoordinatesList.getFz(), null);
+	chart.updateXYSeries("mx", dataPointCoordinatesList.getTimestamp(), dataPointCoordinatesList.getMx(), null);
+	chart.updateXYSeries("my", dataPointCoordinatesList.getTimestamp(), dataPointCoordinatesList.getMy(), null);
+	chart.updateXYSeries("mz", dataPointCoordinatesList.getTimestamp(), dataPointCoordinatesList.getMz(), null);
     }
 }
