@@ -155,7 +155,7 @@ Test mit einfacher Swing Komponente
 
 </rich_text>
 	</node>
-	<node custom_icon_id="0" foreground="#ff0000" is_bold="True" name="Aktuell" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179378.83" ts_lastsave="1558695798.78" unique_id="3">
+	<node custom_icon_id="0" foreground="#ff0000" is_bold="True" name="Aktuell" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179378.83" ts_lastsave="1558705188.9" unique_id="3">
 		<rich_text foreground="#ffff00000000" scale="h2">Mensa!</rich_text>
 		<rich_text>
 Helfen lassen, wenn etwas nicht funktioniert
@@ -165,6 +165,7 @@ dazu: Wecker installieren
 ____________________________
 
 Oliver fragen, Stunden auf den nächsten Monat übertragen
+Mehr Stunden arbeiten künftig?
 
 
 </rich_text>
