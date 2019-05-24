@@ -5,8 +5,12 @@
  */
 package jsensorplot.gui;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import jsensorplot.DataPointCoordinatesList;
+import jsensorplot.TimeWindowInSeconds;
 import jsensorplot.sensordata.SensorDataProcessor;
 
 /**
@@ -17,7 +21,9 @@ public class JSensorPlotGui extends javax.swing.JFrame {
 
     private final SensorDataProcessor sensorDataProcessor;
     private final Plot plot;
-    private final PlotController plotController;
+    private final PlotWorker plotWorker;
+    private final TimeWindowPanel timeWindowPanel;
+    
 
     /**
      * Creates new form JSensorPlotGui
@@ -25,16 +31,17 @@ public class JSensorPlotGui extends javax.swing.JFrame {
     public JSensorPlotGui() {
 	sensorDataProcessor = new SensorDataProcessor();
 	plot = new Plot();
-	plotController = new PlotController(sensorDataProcessor, plot);
+	plotWorker = new PlotWorker(sensorDataProcessor, plot);
+	timeWindowPanel = plot.jPanelChart;
 
 	initComponents();
 	myInitComponents();
     }
 
-    public void myInitComponents() {
-	jScrollPane1.setViewportView(plot.jPanelChart);
+    private void myInitComponents() {
+	jScrollPane1.setViewportView(timeWindowPanel);
 	sensorDataProcessor.init();
-	plotController.execute();
+	plotWorker.execute();
     }
 
     /**

@@ -28,9 +28,9 @@ public class DataPointCoordinatesList {
     private final ArrayList<Date> relativeTimestamps;
     boolean isValid;
     private Date firstTimestamp;
-    private long timeWindowInSeconds;
+    private TimeWindowInSeconds timeWindowInSeconds;
 
-    public DataPointCoordinatesList(long timeWindowInSeconds) {
+    public DataPointCoordinatesList(TimeWindowInSeconds timeWindowInSeconds) {
 	fx = new LinkedList();
 	fy = new LinkedList();
 	fz = new LinkedList();
@@ -42,6 +42,7 @@ public class DataPointCoordinatesList {
 	isValid = false;
 
 	this.timeWindowInSeconds = timeWindowInSeconds;
+	this.timeWindowInSeconds.addChangeListener(window -> this.invalidate());
     }
 
     public List<Double> getFx() {
@@ -87,8 +88,7 @@ public class DataPointCoordinatesList {
 	}
     }
 
-    public void setTimeWindowInSeconds(long timeWindowInSeconds) {
-	this.timeWindowInSeconds = timeWindowInSeconds;
+    public void invalidate() {
 	isValid = false;
     }
 
@@ -102,7 +102,7 @@ public class DataPointCoordinatesList {
 	    int nextTimestampIndex = timestampIterator.nextIndex();
 	    long distance = (dateDifference(timestampIterator.next(), lastTimestamp).getTime()) / 1000;
 
-	    if (distance < timeWindowInSeconds) {
+	    if (distance < timeWindowInSeconds.getTimeWindow()) {
 		timestampIndex = nextTimestampIndex;
 		break;
 	    }
@@ -148,6 +148,6 @@ public class DataPointCoordinatesList {
 	my.add(dataPoint.my);
 	mz.add(dataPoint.mz);
 	timestamps.add(dataPoint.timestamp);
-	isValid = false;
+	invalidate();
     }
 }

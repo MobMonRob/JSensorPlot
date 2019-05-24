@@ -5,14 +5,12 @@
  */
 package jsensorplot.gui;
 
-import java.awt.Dimension;
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import javax.swing.JPanel;
 import jsensorplot.DataPoint;
 import jsensorplot.DataPointCoordinatesList;
+import jsensorplot.TimeWindowInSeconds;
 import org.knowm.xchart.*;
 
 /**
@@ -22,16 +20,18 @@ import org.knowm.xchart.*;
 public class Plot {
 
     private final XYChart chart;
-    public final JPanel jPanelChart;
+    public final TimeWindowPanel jPanelChart;
     private final DataPointCoordinatesList dataPointCoordinatesList;
+    public final TimeWindowInSeconds timeWindowInSeconds;
 
     public Plot() {
-	dataPointCoordinatesList = new DataPointCoordinatesList(5);
+	timeWindowInSeconds = new TimeWindowInSeconds(20);
+	dataPointCoordinatesList = new DataPointCoordinatesList(timeWindowInSeconds);
 	DataPoint dummyPoint = new DataPoint(0, 0, 0, 0, 0, 0, Date.from(Instant.now()));
 	dataPointCoordinatesList.addDataPoint(dummyPoint);
 
 	chart = initChart();
-	jPanelChart = new XChartPanel(chart);
+	jPanelChart = new TimeWindowPanel(chart, timeWindowInSeconds);
     }
 
     private XYChart initChart() {

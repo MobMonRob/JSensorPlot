@@ -29,7 +29,7 @@ BulkBuffer (DataPointCoordinatesList, SensorDataProcessor)
 
 </rich_text>
 	</node>
-	<node custom_icon_id="0" foreground="" is_bold="False" name="Vergangen" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179371.03" ts_lastsave="1558004289.75" unique_id="2">
+	<node custom_icon_id="0" foreground="" is_bold="False" name="Vergangen" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179371.03" ts_lastsave="1558681514.74" unique_id="2">
 		<rich_text scale="h1" underline="single">Sensor auslesen per Socket in Java</rich_text>
 		<rich_text>
 	//1. Java Socket Client
@@ -141,22 +141,30 @@ Test mit einfacher Swing Komponente
 //Plot an GUI dran kleben
 //Plot änderbar machen
 
+//Threading für Visualisierung bauen
+	//</rich_text>
+		<rich_text link="webs https://knowm.org/how-to-make-real-time-charts-in-java/">https://knowm.org/how-to-make-real-time-charts-in-java/</rich_text>
+		<rich_text>
+
+//Zeitfenster T der letzten T Sekunden im Buffer
+	//-&gt;Beinflussung der Länger des Datenpuffers: Dynamisch anhand des Abstands der Daten von Anfang zu Ende Puffer
+
+//Plot Aktualisierung
+
+//20 Sekunden passt nicht (21!)
+
 </rich_text>
 	</node>
-	<node custom_icon_id="0" foreground="#ff0000" is_bold="True" name="Aktuell" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179378.83" ts_lastsave="1558603848.01" unique_id="3">
+	<node custom_icon_id="0" foreground="#ff0000" is_bold="True" name="Aktuell" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179378.83" ts_lastsave="1558695798.78" unique_id="3">
 		<rich_text foreground="#ffff00000000" scale="h2">Mensa!</rich_text>
 		<rich_text>
 Helfen lassen, wenn etwas nicht funktioniert
 Entwurfsentscheidungen Dokumentieren in den Kommentaren
-____________________________
-
-
-Oliver fragen, Stunden auf den nächsten Monat übertragen
-JavaFX Problem erklären
-LayoutManager Fixed Size mögliche Lösung
 Fragen bei: Problem über 20 Minuten
 dazu: Wecker installieren
+____________________________
 
+Oliver fragen, Stunden auf den nächsten Monat übertragen
 
 
 </rich_text>
@@ -171,37 +179,10 @@ dazu: Wecker installieren
 </rich_text>
 		<rich_text scale="h3" underline="single">Swing</rich_text>
 		<rich_text>
-(09:00)
-//Threading für Visualisierung bauen
-	//</rich_text>
-		<rich_text link="webs https://knowm.org/how-to-make-real-time-charts-in-java/">https://knowm.org/how-to-make-real-time-charts-in-java/</rich_text>
-		<rich_text>
+//Chart auf Länge anpassen wie?
+//JScrollPane scrollable implementieren, zum testen
 
-//Zeitfenster T der letzten T Sekunden im Buffer
-	//-&gt;Beinflussung der Länger des Datenpuffers: Dynamisch anhand des Abstands der Daten von Anfang zu Ende Puffer
-
-(11:20) Plot Aktualisierung
-
-(12:00) 20 Sekunden passt nicht (21!)
-
-(12:05) Chart auf Länge anpassen wie?
-
-
-</rich_text>
-		<rich_text link="webs https://stackoverflow.com/questions/36163364/jscrollpane-with-fixed-width">https://stackoverflow.com/questions/36163364/jscrollpane-with-fixed-width</rich_text>
-		<rich_text>
-</rich_text>
-		<rich_text link="webs https://tips4java.wordpress.com/2009/12/20/scrollable-panel/">https://tips4java.wordpress.com/2009/12/20/scrollable-panel/</rich_text>
-		<rich_text>
-</rich_text>
-		<rich_text link="webs https://docs.oracle.com/javase/tutorial/uiswing/layout/problems.html">https://docs.oracle.com/javase/tutorial/uiswing/layout/problems.html</rich_text>
-		<rich_text>
-</rich_text>
-		<rich_text link="webs https://stackoverflow.com/questions/13476274/java-swing-vertical-layout-with-fixed-width-and-variable-height">https://stackoverflow.com/questions/13476274/java-swing-vertical-layout-with-fixed-width-and-variable-height</rich_text>
-		<rich_text>
-</rich_text>
-		<rich_text link="webs https://docs.oracle.com/javase/tutorial/uiswing/layout/none.html">https://docs.oracle.com/javase/tutorial/uiswing/layout/none.html</rich_text>
-		<rich_text>
+() TimeWindow panel funktional machen
 
 
 

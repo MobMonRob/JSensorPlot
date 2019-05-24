@@ -14,12 +14,12 @@ import jsensorplot.sensordata.SensorDataProcessor;
  *
  * @author MobMonRob
  */
-public class PlotController extends SwingWorker<Boolean, DataPoint> {
+public class PlotWorker extends SwingWorker<Boolean, DataPoint> {
 
     private final SensorDataProcessor sensorDataProcessor;
     private final Plot plot;
 
-    public PlotController(SensorDataProcessor sensorDataProcessor, Plot plot) {
+    public PlotWorker(SensorDataProcessor sensorDataProcessor, Plot plot) {
 	this.sensorDataProcessor = sensorDataProcessor;
 	this.plot = plot;
     }
