@@ -42,7 +42,7 @@ public class DataPointCoordinatesList {
 	isValid = false;
 
 	this.timeWindowInSeconds = timeWindowInSeconds;
-	this.timeWindowInSeconds.addChangeListener(window -> this.invalidate());
+	this.timeWindowInSeconds.addChangeListener(window -> this.invalidate()); //not nice
     }
 
     public List<Double> getFx() {

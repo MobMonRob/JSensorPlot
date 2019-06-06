@@ -155,7 +155,7 @@ Test mit einfacher Swing Komponente
 
 </rich_text>
 	</node>
-	<node custom_icon_id="0" foreground="#ff0000" is_bold="True" name="Aktuell" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179378.83" ts_lastsave="1559806967.66" unique_id="3">
+	<node custom_icon_id="0" foreground="#ff0000" is_bold="True" name="Aktuell" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179378.83" ts_lastsave="1559810766.53" unique_id="3">
 		<rich_text foreground="#ffff00000000" scale="h2">Mensa!</rich_text>
 		<rich_text>
 Helfen lassen, wenn etwas nicht funktioniert
@@ -188,8 +188,11 @@ ____________________________
 		(09:35) Anzeigen am Schieberegler, welcher Wert gesetzt ist	
 		(09:45) Initialwert des Schiebereglers setzen
 	
-	Zoom -&gt; Diese Information in TimeWindowsPanel noch dazu
-	Disable Zoom
+	(09:50-) Zoom
+		Diese Information in ZoomPanel noch dazu
+		ZoomPanel ist Listener bei Zoom und invalidiert sich bei Änderung
+
+Zoom bei null gleich breiit wie Fenster
 
 
 Buttons für Verbinden, ... -&gt; asychnron, Threading!
@@ -207,6 +210,8 @@ Event-Handling unabhängig von Swing machen
 Ersten Dummy Datenpunkt entfernen
 
 GUI finalisieren soweit
+
+Ordentliche Plot API (Minimale Kopplung zu GUI + Check, ob übergebene Werte korrekt): Zoom, TimeWindow, Chart
 
 
 </rich_text>

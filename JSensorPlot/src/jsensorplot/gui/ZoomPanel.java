@@ -6,7 +6,7 @@
 package jsensorplot.gui;
 
 import java.awt.Dimension;
-import jsensorplot.TimeWindowInSeconds;
+import jsensorplot.Zoom;
 import org.knowm.xchart.XChartPanel;
 import org.knowm.xchart.XYChart;
 
@@ -14,13 +14,17 @@ import org.knowm.xchart.XYChart;
  *
  * @author MobMonRob
  */
-public class TimeWindowPanel extends XChartPanel {
+public class ZoomPanel extends XChartPanel {
 
-    private final TimeWindowInSeconds timeWindowInSeconds;
+    public final Zoom zoom;
 
-    public TimeWindowPanel(XYChart chart, TimeWindowInSeconds timeWindowInSeconds) {
+    public ZoomPanel(XYChart chart) {
 	super(chart);
-	this.timeWindowInSeconds = timeWindowInSeconds;
+	zoom = new Zoom(10, true);
+	zoom.addChangeListener(theZoom -> {
+	    this.invalidate();
+	    this.getParent().validate();
+	});
     }
 
     @Override
@@ -30,8 +34,13 @@ public class TimeWindowPanel extends XChartPanel {
 	}
 
 	Dimension parentSize = getParent().getSize();
-	//Dimension timeWindowSize = new Dimension(timeWindowInSeconds.getTimeWindow() * 100, parentSize.height);
 
-	return parentSize;
+	Dimension zoomedSize = parentSize;
+
+	if (zoom.isEnabled()) {
+	    zoomedSize = new Dimension(200 + zoom.getZoom() * 100, parentSize.height);
+	}
+
+	return zoomedSize;
     }
 }

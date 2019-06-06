@@ -16,7 +16,7 @@ import jsensorplot.util.ListenerList;
 public class TimeWindowInSeconds implements Listenable<TimeWindowInSeconds> {
 
     private int timeWindowInSeconds;
-    private ListenerList<TimeWindowInSeconds> listenerList;
+    private final ListenerList<TimeWindowInSeconds> listenerList;
 
     public TimeWindowInSeconds(int timeWindowInSeconds) {
 	this.timeWindowInSeconds = timeWindowInSeconds;

@@ -20,7 +20,7 @@ import org.knowm.xchart.*;
 public class Plot {
 
     private final XYChart chart;
-    public final TimeWindowPanel timeWindowPanel;
+    public final ZoomPanel zoomPanel;
     private final DataPointCoordinatesList dataPointCoordinatesList;
     public final TimeWindowInSeconds timeWindowInSeconds;
 
@@ -31,7 +31,7 @@ public class Plot {
 	dataPointCoordinatesList.addDataPoint(dummyPoint);
 
 	chart = initChart();
-	timeWindowPanel = new TimeWindowPanel(chart, timeWindowInSeconds);
+	zoomPanel = new ZoomPanel(chart);
     }
 
     private XYChart initChart() {
@@ -52,7 +52,7 @@ public class Plot {
     public void addDataPoints(List<DataPoint> dataPoints) {
 	dataPointCoordinatesList.addDataPoints(dataPoints);
 	updateDataPointCoordinatesList();
-	timeWindowPanel.repaint();
+	zoomPanel.repaint();
     }
 
     private void updateDataPointCoordinatesList() {

@@ -36,7 +36,7 @@ public class JSensorPlotGui extends javax.swing.JFrame {
     }
 
     private void myInitComponents() {
-	jScrollPane1.setViewportView(plot.timeWindowPanel);
+	jScrollPane1.setViewportView(plot.zoomPanel);
 	sensorDataProcessor.init();
 	plotWorker.execute();
     }
@@ -61,8 +61,6 @@ public class JSensorPlotGui extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Width of time windows T");
 
-        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-
         jSlider1.setMajorTickSpacing(10);
         jSlider1.setMinorTickSpacing(5);
         jSlider1.setPaintLabels(true);
@@ -73,12 +71,29 @@ public class JSensorPlotGui extends javax.swing.JFrame {
             }
         });
 
+        jSlider2.setMajorTickSpacing(10);
+        jSlider2.setMinorTickSpacing(5);
+        jSlider2.setPaintLabels(true);
+        jSlider2.setPaintTicks(true);
+        jSlider2.setToolTipText("");
+        jSlider2.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSlider2StateChanged(evt);
+            }
+        });
+
+        jCheckBox1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jCheckBox1StateChanged(evt);
+            }
+        });
+
         jLabel1.setLabelFor(jSlider1);
         jLabel1.setText("Time window in seconds");
         jLabel1.setToolTipText("");
 
         jLabel2.setLabelFor(jSlider2);
-        jLabel2.setText("Zoom in T");
+        jLabel2.setText("Zoom of  time window in seconds");
 
         jLabel3.setLabelFor(jCheckBox1);
         jLabel3.setText("Disable Zoom");
@@ -136,6 +151,22 @@ public class JSensorPlotGui extends javax.swing.JFrame {
 	    plot.timeWindowInSeconds.setTimeWindow(timeWindow);
 	}
     }//GEN-LAST:event_jSlider1StateChanged
+
+    private void jSlider2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider2StateChanged
+	int zoom = jSlider2.getValue();
+
+	if (zoom != 0) {
+	    plot.zoomPanel.zoom.setZoom(zoom);
+	}
+    }//GEN-LAST:event_jSlider2StateChanged
+
+    private void jCheckBox1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBox1StateChanged
+	if (jCheckBox1.isSelected()) {
+	    plot.zoomPanel.zoom.disable();
+	} else {
+	    plot.zoomPanel.zoom.enable();
+	}
+    }//GEN-LAST:event_jCheckBox1StateChanged
 
     /**
      * @param args the command line arguments
