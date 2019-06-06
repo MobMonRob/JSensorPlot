@@ -30,10 +30,8 @@ public class TimeWindowPanel extends XChartPanel {
 	}
 
 	Dimension parentSize = getParent().getSize();
+	//Dimension timeWindowSize = new Dimension(timeWindowInSeconds.getTimeWindow() * 100, parentSize.height);
 
-	//this.
-	//
-	//return new Dimension(10000, 100);
-	return new Dimension(getParent().getSize());
+	return parentSize;
     }
 }

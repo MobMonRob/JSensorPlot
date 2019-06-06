@@ -155,7 +155,7 @@ Test mit einfacher Swing Komponente
 
 </rich_text>
 	</node>
-	<node custom_icon_id="0" foreground="#ff0000" is_bold="True" name="Aktuell" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179378.83" ts_lastsave="1558695798.78" unique_id="3">
+	<node custom_icon_id="0" foreground="#ff0000" is_bold="True" name="Aktuell" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179378.83" ts_lastsave="1559805659.03" unique_id="3">
 		<rich_text foreground="#ffff00000000" scale="h2">Mensa!</rich_text>
 		<rich_text>
 Helfen lassen, wenn etwas nicht funktioniert
@@ -163,8 +163,6 @@ Entwurfsentscheidungen Dokumentieren in den Kommentaren
 Fragen bei: Problem über 20 Minuten
 dazu: Wecker installieren
 ____________________________
-
-Oliver fragen, Stunden auf den nächsten Monat übertragen
 
 
 </rich_text>
@@ -182,10 +180,13 @@ Oliver fragen, Stunden auf den nächsten Monat übertragen
 //Chart auf Länge anpassen wie?
 //JScrollPane scrollable implementieren, zum testen
 
-() TimeWindow panel funktional machen
+(09:00-09:15) //TimeWindow panel fixe Breite machen
+	-&gt;u.U.  noch Gewicht anpassen
 
-
-
+(09:15-) Schaltflächen funktional machen
+	TimeWindow
+	Zoom -&gt; Diese Information in TimeWindowsPanel noch dazu
+	Disable Zoom
 
 
 Buttons für Verbinden, ... -&gt; asychnron, Threading!
@@ -199,6 +200,10 @@ Zoom bestimmt Länge des Charts
 Start, Stop Aufnahme
 
 Event-Handling unabhängig von Swing machen
+
+Ersten Dummy Datenpunkt entfernen
+
+GUI finalisieren soweit
 
 
 </rich_text>

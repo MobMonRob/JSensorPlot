@@ -22,8 +22,6 @@ public class JSensorPlotGui extends javax.swing.JFrame {
     private final SensorDataProcessor sensorDataProcessor;
     private final Plot plot;
     private final PlotWorker plotWorker;
-    private final TimeWindowPanel timeWindowPanel;
-    
 
     /**
      * Creates new form JSensorPlotGui
@@ -32,14 +30,13 @@ public class JSensorPlotGui extends javax.swing.JFrame {
 	sensorDataProcessor = new SensorDataProcessor();
 	plot = new Plot();
 	plotWorker = new PlotWorker(sensorDataProcessor, plot);
-	timeWindowPanel = plot.jPanelChart;
 
 	initComponents();
 	myInitComponents();
     }
 
     private void myInitComponents() {
-	jScrollPane1.setViewportView(timeWindowPanel);
+	jScrollPane1.setViewportView(plot.timeWindowPanel);
 	sensorDataProcessor.init();
 	plotWorker.execute();
     }
@@ -63,6 +60,8 @@ public class JSensorPlotGui extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Width of time windows T");
+
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 
         jSlider1.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -125,8 +124,7 @@ public class JSensorPlotGui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
-	// TODO add your handling code here:
-	System.out.println(jSlider1.getValue());
+	plot.timeWindowInSeconds.setTimeWindow(jSlider1.getValue());
     }//GEN-LAST:event_jSlider1StateChanged
 
     /**
