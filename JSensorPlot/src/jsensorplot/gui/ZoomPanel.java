@@ -20,7 +20,7 @@ public class ZoomPanel extends XChartPanel {
 
     public ZoomPanel(XYChart chart) {
 	super(chart);
-	zoom = new Zoom(10, true);
+	zoom = new Zoom(0, true);
 	zoom.addChangeListener(theZoom -> {
 	    this.invalidate();
 	    this.getParent().validate();
@@ -38,7 +38,7 @@ public class ZoomPanel extends XChartPanel {
 	Dimension zoomedSize = parentSize;
 
 	if (zoom.isEnabled()) {
-	    zoomedSize = new Dimension(200 + zoom.getZoom() * 100, parentSize.height);
+	    zoomedSize = new Dimension(parentSize.width + zoom.getZoom() * 100, parentSize.height);
 	}
 
 	return zoomedSize;

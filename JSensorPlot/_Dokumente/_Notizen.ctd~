@@ -155,7 +155,7 @@ Test mit einfacher Swing Komponente
 
 </rich_text>
 	</node>
-	<node custom_icon_id="0" foreground="#ff0000" is_bold="True" name="Aktuell" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179378.83" ts_lastsave="1559810743.74" unique_id="3">
+	<node custom_icon_id="0" foreground="#ff0000" is_bold="True" name="Aktuell" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179378.83" ts_lastsave="1559812741.59" unique_id="3">
 		<rich_text foreground="#ffff00000000" scale="h2">Mensa!</rich_text>
 		<rich_text>
 Helfen lassen, wenn etwas nicht funktioniert
@@ -189,10 +189,19 @@ ____________________________
 		(09:45) Initialwert des Schiebereglers setzen
 	
 	(09:50-) Zoom
-		Diese Information in ZoomPanel noch dazu
-		ZoomPanel ist Listener bei Zoom und invalidiert sich bei Änderung
+		//Diese Information in ZoomPanel noch dazu
+		//ZoomPanel ist Listener bei Zoom und invalidiert sich bei Änderung
+		//Zoom bei null gleich breiit wie Fenster
 
-Zoom nur für 
+(10:55) Zoom Label ordenltich hin machen
+
+
+
+</rich_text>
+		<rich_text foreground="#ffff00000000">Oliver fragen: </rich_text>
+		<rich_text>Die Zeit sollte weiter laufen, wenn die Länge des Zeitfensters erreicht ist?
+	Möglichkeit 1: -x Sekunden
+	Möglichkeit 2: Zeit seit Beginn
 
 
 Buttons für Verbinden, ... -&gt; asychnron, Threading!
