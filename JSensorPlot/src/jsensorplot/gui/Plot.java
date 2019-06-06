@@ -46,6 +46,7 @@ public class Plot {
 
 	newChart.getStyler().setDatePattern("mm:ss");
 	newChart.getStyler().setMarkerSize(0);
+	newChart.getStyler().setPlotContentSize(1.0);
 
 	return newChart;
     }
