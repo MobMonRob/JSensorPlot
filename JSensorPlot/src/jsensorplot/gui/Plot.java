@@ -12,6 +12,7 @@ import jsensorplot.DataPoint;
 import jsensorplot.DataPointCoordinatesList;
 import jsensorplot.TimeWindowInSeconds;
 import org.knowm.xchart.*;
+import org.knowm.xchart.style.XYStyler;
 
 /**
  *
@@ -44,9 +45,14 @@ public class Plot {
 	newChart.addSeries​("my", dataPointCoordinatesList.getTimestamp(), dataPointCoordinatesList.getMy());
 	newChart.addSeries​("mz", dataPointCoordinatesList.getTimestamp(), dataPointCoordinatesList.getMz());
 
-	newChart.getStyler().setDatePattern("mm:ss");
-	newChart.getStyler().setMarkerSize(0);
-	newChart.getStyler().setPlotContentSize(1.0);
+	XYStyler styler = newChart.getStyler();
+
+	styler.setDatePattern("mm:ss");
+	styler.setMarkerSize(0);
+	styler.setPlotContentSize(1.0);
+
+	styler.setYAxisMin(-110.0); // Problem: what is the interval of the data?
+	styler.setYAxisMax(110.0);
 
 	return newChart;
     }
