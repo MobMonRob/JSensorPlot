@@ -68,7 +68,6 @@ public class JSensorPlotGui extends javax.swing.JFrame {
 
         jSlider2.setMajorTickSpacing(10);
         jSlider2.setMinorTickSpacing(5);
-        jSlider2.setPaintLabels(true);
         jSlider2.setPaintTicks(true);
         jSlider2.setValue(0);
         jSlider2.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -90,7 +89,7 @@ public class JSensorPlotGui extends javax.swing.JFrame {
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel2.setLabelFor(jSlider2);
-        jLabel2.setText("Zoom of  time window in seconds");
+        jLabel2.setText("Zoom of  time window");
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel3.setLabelFor(jCheckBox1);
