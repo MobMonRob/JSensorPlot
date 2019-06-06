@@ -54,7 +54,7 @@ public class JSensorPlotGui extends javax.swing.JFrame {
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(200, 0), new java.awt.Dimension(200, 0), new java.awt.Dimension(200, 32767));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Width of time windows T");
+        setTitle("JSensorPlot");
 
         jSlider1.setMajorTickSpacing(10);
         jSlider1.setMinorTickSpacing(5);
