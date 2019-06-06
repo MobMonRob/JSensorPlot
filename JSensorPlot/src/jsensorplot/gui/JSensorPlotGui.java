@@ -70,7 +70,6 @@ public class JSensorPlotGui extends javax.swing.JFrame {
         jSlider2.setMinorTickSpacing(5);
         jSlider2.setPaintLabels(true);
         jSlider2.setPaintTicks(true);
-        jSlider2.setToolTipText("");
         jSlider2.setValue(0);
         jSlider2.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {

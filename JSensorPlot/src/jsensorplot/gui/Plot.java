@@ -45,6 +45,7 @@ public class Plot {
 	newChart.addSeries​("mz", dataPointCoordinatesList.getTimestamp(), dataPointCoordinatesList.getMz());
 
 	newChart.getStyler().setDatePattern("mm:ss");
+	newChart.getStyler().setMarkerSize(0);
 
 	return newChart;
     }
