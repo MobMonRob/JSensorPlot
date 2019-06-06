@@ -63,6 +63,10 @@ public class JSensorPlotGui extends javax.swing.JFrame {
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 
+        jSlider1.setMajorTickSpacing(10);
+        jSlider1.setMinorTickSpacing(5);
+        jSlider1.setPaintLabels(true);
+        jSlider1.setPaintTicks(true);
         jSlider1.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jSlider1StateChanged(evt);
@@ -70,7 +74,7 @@ public class JSensorPlotGui extends javax.swing.JFrame {
         });
 
         jLabel1.setLabelFor(jSlider1);
-        jLabel1.setText("Width of time window T");
+        jLabel1.setText("Time window in seconds");
         jLabel1.setToolTipText("");
 
         jLabel2.setLabelFor(jSlider2);
@@ -117,14 +121,20 @@ public class JSensorPlotGui extends javax.swing.JFrame {
                     .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jCheckBox1))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE))
         );
+
+        jSlider1.setValue(plot.timeWindowInSeconds.getTimeWindow());
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
-	plot.timeWindowInSeconds.setTimeWindow(jSlider1.getValue());
+	int timeWindow = jSlider1.getValue();
+
+	if (timeWindow != 0) {
+	    plot.timeWindowInSeconds.setTimeWindow(timeWindow);
+	}
     }//GEN-LAST:event_jSlider1StateChanged
 
     /**
