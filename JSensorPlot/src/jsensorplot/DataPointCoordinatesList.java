@@ -11,12 +11,13 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
+import jsensorplot.util.Listenable;
 
 /**
  *
  * @author MobMonRob
  */
-public class DataPointCoordinatesList {
+public class DataPointCoordinatesList extends Listenable<DataPointCoordinatesList> {
 
     private final LinkedList<Double> fx;
     private final LinkedList<Double> fy;
@@ -26,7 +27,7 @@ public class DataPointCoordinatesList {
     private final LinkedList<Double> mz;
     private final LinkedList<Date> timestamps;
     private final ArrayList<Date> relativeTimestamps;
-    boolean isValid;
+    private boolean isValid;
     private Date firstTimestamp;
     private final TimeWindowInSeconds timeWindowInSeconds;
 
@@ -40,6 +41,8 @@ public class DataPointCoordinatesList {
 	timestamps = new LinkedList();
 	relativeTimestamps = new ArrayList();
 	isValid = false;
+
+	this.addDataPoint(new DataPoint(0, 0, 0, 0, 0, 0, Date.from(Instant.now())));
 
 	this.timeWindowInSeconds = timeWindowInSeconds;
 	this.timeWindowInSeconds.addChangeListener(window -> this.invalidate()); //not nice
@@ -90,6 +93,7 @@ public class DataPointCoordinatesList {
 
     public void invalidate() {
 	isValid = false;
+	super.changed();
     }
 
     private void shrinkListsToTimeWindow() {
@@ -138,9 +142,10 @@ public class DataPointCoordinatesList {
 
     public void addDataPoints(List<DataPoint> dataPoints) {
 	dataPoints.forEach(dataPoint -> addDataPoint(dataPoint));
+	super.changed();
     }
 
-    public void addDataPoint(DataPoint dataPoint) {
+    private void addDataPoint(DataPoint dataPoint) {
 	fx.add(dataPoint.fx);
 	fy.add(dataPoint.fy);
 	fz.add(dataPoint.fz);

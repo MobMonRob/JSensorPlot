@@ -5,7 +5,12 @@
  */
 package jsensorplot.gui;
 
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JPanel;
+import jsensorplot.DataPoint;
+import jsensorplot.DataPointCoordinatesList;
 import jsensorplot.TimeWindowInSeconds;
 import jsensorplot.sensordata.SensorDataProcessor;
 
@@ -19,17 +24,17 @@ public class GuiController {
     private final Plot plot;
     private final NextDataPointsWorker nextDataPointsWorker;
 
+    private final DataPointCoordinatesList dataPointCoordinatesList;
     private final TimeWindowInSeconds timeWindowInSeconds;
     private final Zoom zoom;
 
     public GuiController(boolean DEBUG_MODE) {
 	zoom = new Zoom(0, true);
 	timeWindowInSeconds = new TimeWindowInSeconds(20);
-
+	dataPointCoordinatesList = new DataPointCoordinatesList(timeWindowInSeconds);
 	sensorDataProcessor = new SensorDataProcessor(DEBUG_MODE);
-
-	plot = new Plot(timeWindowInSeconds, zoom);
-	nextDataPointsWorker = new NextDataPointsWorker(sensorDataProcessor, plot);
+	plot = new Plot(dataPointCoordinatesList, zoom);
+	nextDataPointsWorker = new NextDataPointsWorker(sensorDataProcessor, dataPointCoordinatesList);
     }
 
     public void init() {

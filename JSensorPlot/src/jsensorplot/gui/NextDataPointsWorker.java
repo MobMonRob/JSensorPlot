@@ -8,6 +8,7 @@ package jsensorplot.gui;
 import java.util.List;
 import javax.swing.SwingWorker;
 import jsensorplot.DataPoint;
+import jsensorplot.DataPointCoordinatesList;
 import jsensorplot.sensordata.SensorDataProcessor;
 
 /**
@@ -17,11 +18,11 @@ import jsensorplot.sensordata.SensorDataProcessor;
 public class NextDataPointsWorker extends SwingWorker<Boolean, DataPoint> {
 
     private final SensorDataProcessor sensorDataProcessor;
-    private final Plot plot;
+    private final DataPointCoordinatesList dataPointCoordinatesList;
 
-    public NextDataPointsWorker(SensorDataProcessor sensorDataProcessor, Plot plot) {
+    public NextDataPointsWorker(SensorDataProcessor sensorDataProcessor, DataPointCoordinatesList dataPointCoordinatesList) {
 	this.sensorDataProcessor = sensorDataProcessor;
-	this.plot = plot;
+	this.dataPointCoordinatesList = dataPointCoordinatesList;
     }
 
     @Override
@@ -35,6 +36,6 @@ public class NextDataPointsWorker extends SwingWorker<Boolean, DataPoint> {
 
     @Override
     protected void process(List<DataPoint> dataPoints) {
-	plot.addDataPoints(dataPoints);
+	dataPointCoordinatesList.addDataPoints(dataPoints);
     }
 }

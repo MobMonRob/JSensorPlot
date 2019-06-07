@@ -6,12 +6,11 @@
 package jsensorplot.gui;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import javax.swing.JPanel;
 import jsensorplot.DataPoint;
 import jsensorplot.DataPointCoordinatesList;
-import jsensorplot.TimeWindowInSeconds;
 import org.knowm.xchart.*;
 import org.knowm.xchart.style.XYStyler;
 
@@ -25,14 +24,12 @@ public class Plot {
     private final ZoomPanel zoomPanel;
     private final DataPointCoordinatesList dataPointCoordinatesList;
 
-    public Plot(TimeWindowInSeconds timeWindowInSeconds, Zoom zoom) {
-	dataPointCoordinatesList = new DataPointCoordinatesList(timeWindowInSeconds);
-
-	DataPoint dummyPoint = new DataPoint(0, 0, 0, 0, 0, 0, Date.from(Instant.now()));
-	dataPointCoordinatesList.addDataPoint(dummyPoint);
-
+    public Plot(DataPointCoordinatesList dataPointCoordinatesList, Zoom zoom) {
+	this.dataPointCoordinatesList = dataPointCoordinatesList;
 	chart = initChart();
 	zoomPanel = new ZoomPanel(chart, zoom);
+
+	this.dataPointCoordinatesList.addChangeListener(list -> this.update());
     }
 
     private XYChart initChart() {
@@ -57,8 +54,7 @@ public class Plot {
 	return newChart;
     }
 
-    public void addDataPoints(List<DataPoint> dataPoints) {
-	dataPointCoordinatesList.addDataPoints(dataPoints);
+    public void update() {
 	updateFromDataPointCoordinatesList();
 	zoomPanel.repaint();
     }
