@@ -6,11 +6,7 @@
 package jsensorplot.gui;
 
 import jsensorplot.Zoom;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Date;
 import javax.swing.JPanel;
-import jsensorplot.DataPoint;
 import jsensorplot.DataPointCoordinatesList;
 import jsensorplot.TimeWindowInSeconds;
 import jsensorplot.sensordata.SensorDataProcessor;
