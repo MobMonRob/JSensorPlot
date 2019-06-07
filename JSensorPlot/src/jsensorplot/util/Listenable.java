@@ -5,13 +5,27 @@
  */
 package jsensorplot.util;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Consumer;
 
 /**
  *
  * @author MobMonRob
  */
-public interface Listenable<T> {
+public class Listenable<T extends Listenable> {
 
-    public void addChangeListener(Consumer<T> changeListener);
+    private final List<Consumer<T>> changeListeners;
+
+    public Listenable() {
+	changeListeners = new ArrayList();
+    }
+
+    public void addChangeListener(Consumer<T> changeListener) {
+	changeListeners.add(changeListener);
+    }
+
+    protected void changed() {
+	changeListeners.forEach(listener -> listener.accept((T) this));
+    }
 }

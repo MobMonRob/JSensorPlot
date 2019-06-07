@@ -5,29 +5,25 @@
  */
 package jsensorplot;
 
-import java.util.function.Consumer;
 import jsensorplot.util.Listenable;
-import jsensorplot.util.ListenerList;
 
 /**
  *
  * @author MobMonRob
  */
-public class Zoom implements Listenable<Zoom> {
+public class Zoom extends Listenable<Zoom> {
 
     private int zoom;
     private boolean isEnabled;
-    private final ListenerList<Zoom> listenerList;
 
     public Zoom(int zoom, boolean isEnabled) {
 	this.zoom = zoom;
 	this.isEnabled = isEnabled;
-	listenerList = new ListenerList(this);
     }
 
     public void setZoom(int zoom) {
 	this.zoom = zoom;
-	listenerList.changed();
+	super.changed();
     }
 
     public int getZoom() {
@@ -36,20 +32,15 @@ public class Zoom implements Listenable<Zoom> {
 
     public void enable() {
 	this.isEnabled = true;
-	listenerList.changed();
+	super.changed();
     }
 
     public void disable() {
 	this.isEnabled = false;
-	listenerList.changed();
+	super.changed();
     }
 
     public boolean isEnabled() {
 	return isEnabled;
-    }
-
-    @Override
-    public void addChangeListener(Consumer<Zoom> changeListener) {
-	listenerList.addChangeListener(changeListener);
     }
 }

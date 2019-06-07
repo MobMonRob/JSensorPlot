@@ -28,7 +28,7 @@ public class DataPointCoordinatesList {
     private final ArrayList<Date> relativeTimestamps;
     boolean isValid;
     private Date firstTimestamp;
-    private TimeWindowInSeconds timeWindowInSeconds;
+    private final TimeWindowInSeconds timeWindowInSeconds;
 
     public DataPointCoordinatesList(TimeWindowInSeconds timeWindowInSeconds) {
 	fx = new LinkedList();

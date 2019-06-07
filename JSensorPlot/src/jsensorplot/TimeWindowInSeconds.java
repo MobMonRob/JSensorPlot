@@ -5,35 +5,26 @@
  */
 package jsensorplot;
 
-import java.util.function.Consumer;
 import jsensorplot.util.Listenable;
-import jsensorplot.util.ListenerList;
 
 /**
  *
  * @author MobMonRob
  */
-public class TimeWindowInSeconds implements Listenable<TimeWindowInSeconds> {
+public class TimeWindowInSeconds extends Listenable<TimeWindowInSeconds> {
 
     private int timeWindowInSeconds;
-    private final ListenerList<TimeWindowInSeconds> listenerList;
 
     public TimeWindowInSeconds(int timeWindowInSeconds) {
 	this.timeWindowInSeconds = timeWindowInSeconds;
-	listenerList = new ListenerList(this);
     }
 
     public void setTimeWindow(int timeWindowInSeconds) {
 	this.timeWindowInSeconds = timeWindowInSeconds;
-	listenerList.changed();
+	super.changed();
     }
 
     public int getTimeWindow() {
 	return this.timeWindowInSeconds;
-    }
-
-    @Override
-    public void addChangeListener(Consumer<TimeWindowInSeconds> changeListener) {
-	listenerList.addChangeListener(changeListener);
     }
 }

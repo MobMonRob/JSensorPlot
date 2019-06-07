@@ -22,10 +22,27 @@ Tabs: </rich_text>
 
 </rich_text>
 	</node>
-	<node custom_icon_id="0" foreground="" is_bold="False" name="Ideen" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1558082189.93" ts_lastsave="1558082237.64" unique_id="6">
+	<node custom_icon_id="0" foreground="" is_bold="False" name="Ideen" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1558082189.93" ts_lastsave="1559892822.19" unique_id="6">
 		<rich_text>Mapping von Liste an Objekten mit Attributen zu Listen an Attributen (DataPointCoordinatesList)
 
 BulkBuffer (DataPointCoordinatesList, SensorDataProcessor)
+
+</rich_text>
+		<rich_text scale="h1" underline="single">Compilerbau</rich_text>
+		<rich_text>
+Compilerbau-Suite:
+truffle java
+graal compiler java
+
+Mathe Sprache Projekt: fortress math language
+</rich_text>
+		<rich_text link="webs https://de.wikipedia.org/wiki/Fortress_(Programmiersprache)">https://de.wikipedia.org/wiki/Fortress_(Programmiersprache)</rich_text>
+		<rich_text>
+	//</rich_text>
+		<rich_text link="webs https://de.wikipedia.org/wiki/Fortran">https://de.wikipedia.org/wiki/Fortran</rich_text>
+		<rich_text>
+
+Kombination wäre super.
 
 </rich_text>
 	</node>
@@ -183,7 +200,7 @@ Test mit einfacher Swing Komponente
 
 </rich_text>
 	</node>
-	<node custom_icon_id="0" foreground="#ff0000" is_bold="True" name="Aktuell" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179378.83" ts_lastsave="1559842880.96" unique_id="3">
+	<node custom_icon_id="0" foreground="#ff0000" is_bold="True" name="Aktuell" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179378.83" ts_lastsave="1559894062.46" unique_id="3">
 		<rich_text>Helfen lassen, wenn etwas nicht funktioniert
 Fragen bei: Problem über 20 Minuten
 ____________________________
@@ -201,12 +218,16 @@ ____________________________
 </rich_text>
 		<rich_text scale="h3" underline="single">Swing</rich_text>
 		<rich_text>
-Sachen, die Listenable implementieren: besser Ableiten statt implementieren
+(09:30-10:00) Sachen, die Listenable implementieren: besser Ableiten statt implementieren
 
 Ordentliche Plot API (Minimale Kopplung zu GUI + Check, ob übergebene Werte korrekt): Zoom, TimeWindow, Chart
 	Anforderung: Trennung von GUI und Verarbeitung von Sensordaten
 
+Dokumentation
+
 Performance verbessern
+
+Mit Roboter schauen, ob in Plot.java die minimalen und maximalen Werte passen.
 
 </rich_text>
 	</node>
