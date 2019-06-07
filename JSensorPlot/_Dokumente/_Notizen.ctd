@@ -46,7 +46,7 @@
 
 	</rich_text>
 	</node>
-	<node custom_icon_id="0" foreground="" is_bold="False" name="Vergangen" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179371.03" ts_lastsave="1559818520.64" unique_id="2">
+	<node custom_icon_id="0" foreground="" is_bold="False" name="Vergangen" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179371.03" ts_lastsave="1559905494.88" unique_id="2">
 		<rich_text scale="h1" underline="single">Sensor auslesen per Socket in Java</rich_text>
 		<rich_text>
 	    //1. Java Socket Client
@@ -199,14 +199,6 @@
 	    // nicht notwendig gewesen: Falls zu schwierig: andere API ausprobieren
 
 	</rich_text>
-	</node>
-	<node custom_icon_id="0" foreground="#ff0000" is_bold="True" name="Aktuell" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179378.83" ts_lastsave="1559905105.03" unique_id="3">
-		<rich_text>Helfen lassen, wenn etwas nicht funktioniert
-	    Fragen bei: Problem über 20 Minuten
-	    ____________________________
-
-
-</rich_text>
 		<rich_text scale="h1" underline="single">Weitere Verbesserung</rich_text>
 		<rich_text>
 //GuiController als Fassade, die das Panel hat und Events handled und prüft: getTimeWindow(), getZoom(), getPanel(), Input: sensorDataProcessor, Input: Debug Mode
@@ -215,21 +207,28 @@
 	    
 //alles private checken
 
-ZoomPanel aus Plot raus?!
+</rich_text>
+	</node>
+	<node custom_icon_id="0" foreground="#ff0000" is_bold="True" name="Aktuell" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179378.83" ts_lastsave="1559905530.13" unique_id="3">
+		<rich_text>Helfen lassen, wenn etwas nicht funktioniert
+Fragen bei: Problem über 20 Minuten
+____________________________
+
+
+</rich_text>
+		<rich_text scale="h1" underline="single">Weitere Verbesserung</rich_text>
+		<rich_text>
+</rich_text>
+		<rich_text foreground="#ffff00000000">Mit Roboter schauen, ob in Plot.java die minimalen und maximalen Werte passen.</rich_text>
+		<rich_text>
 
 Dokumentation
 
-	    
+Performance verbessern (Chart, Parser) -&gt; besseres Buffering
 
-(12:30) 	</rich_text>
-		<rich_text foreground="#ffff00000000">Mit Roboter schauen, ob in Plot.java die minimalen und maximalen Werte passen.</rich_text>
-		<rich_text>
-	
-	Performance verbessern (Chart, Parser) -&gt; besseres Buffering
+Beschreibung in readme.md
 
-	    Beschreibung in readme.md
-
-	    Lizenz?
+Lizenz?
 
 </rich_text>
 	</node>
