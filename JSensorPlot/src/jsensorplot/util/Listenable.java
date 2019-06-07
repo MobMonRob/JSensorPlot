@@ -13,7 +13,7 @@ import java.util.function.Consumer;
  *
  * @author MobMonRob
  */
-public class Listenable<T extends Listenable> {
+public abstract class Listenable<T extends Listenable> {
 
     private final List<Consumer<T>> changeListeners;
 
