@@ -12,6 +12,7 @@ import java.util.function.Consumer;
 /**
  *
  * @author MobMonRob
+ * @param <T>
  */
 public abstract class Listenable<T extends Listenable> {
 

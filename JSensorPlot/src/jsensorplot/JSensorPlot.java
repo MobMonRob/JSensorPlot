@@ -17,7 +17,7 @@ public class JSensorPlot {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws Exception {
-        JSensorPlotGui.main(args);
+	JSensorPlotGui.main(args);
     }
 
     public JSensorPlot() {

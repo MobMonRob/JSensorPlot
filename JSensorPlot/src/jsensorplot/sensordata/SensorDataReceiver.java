@@ -23,41 +23,41 @@ public class SensorDataReceiver {
     private Socket socket;
 
     private SensorDataReceiver() {
-        this.ipAdress = SENSOR_IP_ADRESS;
-        this.port = SENSOR_PORT;
-        this.socket = new Socket();
+	this.ipAdress = SENSOR_IP_ADRESS;
+	this.port = SENSOR_PORT;
+	this.socket = new Socket();
     }
 
     public SensorDataReceiver(String ipAdress, int port) {
-        this.ipAdress = ipAdress;
-        this.port = port;
-        this.socket = new Socket();
+	this.ipAdress = ipAdress;
+	this.port = port;
+	this.socket = new Socket();
     }
 
     public static SensorDataReceiver createStandardReceiver() {
-        return new SensorDataReceiver();
+	return new SensorDataReceiver();
     }
 
     public InputStreamReader connect() {
-        InputStreamReader socketReader = null;
+	InputStreamReader socketReader = null;
 
-        try {
-            socket = new Socket(InetAddress.getByName(ipAdress), port);
-            socketReader = new InputStreamReader(socket.getInputStream());
-        } catch (IOException e) {
-            System.err.println("Connection failed!");
-            System.err.println(e.toString());
-        }
+	try {
+	    socket = new Socket(InetAddress.getByName(ipAdress), port);
+	    socketReader = new InputStreamReader(socket.getInputStream());
+	} catch (IOException e) {
+	    System.err.println("Connection failed!");
+	    System.err.println(e.toString());
+	}
 
-        return socketReader;
+	return socketReader;
     }
 
     public void deconnect() {
-        System.out.println("SensorDataReceiver.deconnect()");
-        try {
-            socket.close();
-        } catch (IOException e) {
-            System.err.println("deconnecting failed!");
-        }
+	System.out.println("SensorDataReceiver.deconnect()");
+	try {
+	    socket.close();
+	} catch (IOException e) {
+	    System.err.println("deconnecting failed!");
+	}
     }
 }

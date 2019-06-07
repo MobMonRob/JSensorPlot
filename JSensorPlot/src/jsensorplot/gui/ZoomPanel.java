@@ -6,7 +6,6 @@
 package jsensorplot.gui;
 
 import java.awt.Dimension;
-import jsensorplot.Zoom;
 import org.knowm.xchart.XChartPanel;
 import org.knowm.xchart.XYChart;
 
@@ -38,7 +37,7 @@ public class ZoomPanel extends XChartPanel {
 	Dimension zoomedSize = parentSize;
 
 	if (zoom.isEnabled()) {
-	    zoomedSize = new Dimension(parentSize.width + zoom.getZoom() * 100, parentSize.height);
+	    zoomedSize = new Dimension(parentSize.width + zoom.getZoom() * 50, parentSize.height);
 	}
 
 	return zoomedSize;

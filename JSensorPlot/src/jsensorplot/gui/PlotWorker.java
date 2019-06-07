@@ -35,8 +35,6 @@ public class PlotWorker extends SwingWorker<Boolean, DataPoint> {
 
     @Override
     protected void process(List<DataPoint> dataPoints) {
-	//dataPoints.stream().forEach(dp -> System.out.println(dp.toString()));
-
 	plot.addDataPoints(dataPoints);
     }
 }

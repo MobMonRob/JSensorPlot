@@ -26,41 +26,41 @@ final public class SensorDataPointParser {
     private String dataParseBuffer;
 
     public SensorDataPointParser() {
-        dataParseBuffer = "";
+	dataParseBuffer = "";
     }
 
     public void addToParseBuffer(String appendage) {
-        dataParseBuffer = dataParseBuffer + appendage;
+	dataParseBuffer = dataParseBuffer + appendage;
     }
 
     public DataPoint parseNextDataPoint() {
-        return parseDataPoint(splitNextDataPointString(), Date.from(Instant.now()));
+	return parseDataPoint(splitNextDataPointString(), Date.from(Instant.now()));
     }
 
     public boolean bufferIsFullEnough() {
-        return dataParseBuffer.length() >= SensorDataPointParser.MAX_DATA_POINT_STRING_SIZE;
+	return dataParseBuffer.length() >= SensorDataPointParser.MAX_DATA_POINT_STRING_SIZE;
     }
 
     private DataPoint parseDataPoint(String dataPointString, Date now) {
-        ArrayList<String> stringCoordinates = new ArrayList();
+	ArrayList<String> stringCoordinates = new ArrayList();
 
-        Matcher coordinateMatcher = COORDINATE_FORMAT.matcher(dataPointString);
+	Matcher coordinateMatcher = COORDINATE_FORMAT.matcher(dataPointString);
 
-        while (coordinateMatcher.find()) {
-            stringCoordinates.add(dataPointString.substring(coordinateMatcher.start(), coordinateMatcher.end()));
-        }
-        assert stringCoordinates.size() == 6;
+	while (coordinateMatcher.find()) {
+	    stringCoordinates.add(dataPointString.substring(coordinateMatcher.start(), coordinateMatcher.end()));
+	}
+	assert stringCoordinates.size() == 6;
 
-        List<Double> dc = stringCoordinates.stream().map(s -> Double.parseDouble(s)).collect(Collectors.toList()); //doubleCoordinates
+	List<Double> dc = stringCoordinates.stream().map(s -> Double.parseDouble(s)).collect(Collectors.toList()); //dc: doubleCoordinates
 
-        return new DataPoint(dc.get(0), dc.get(1), dc.get(2), dc.get(3), dc.get(4), dc.get(5), now);
+	return new DataPoint(dc.get(0), dc.get(1), dc.get(2), dc.get(3), dc.get(4), dc.get(5), now);
     }
 
     private String splitNextDataPointString() {
-        Matcher wholeCoordinateMatcher = WHOLE_COORDINATE_FORMAT.matcher(dataParseBuffer);
-        wholeCoordinateMatcher.find();
-        String nextDataPointString = dataParseBuffer.substring(wholeCoordinateMatcher.start(), wholeCoordinateMatcher.end());
-        dataParseBuffer = dataParseBuffer.substring(wholeCoordinateMatcher.end(), dataParseBuffer.length());
-        return nextDataPointString;
+	Matcher wholeCoordinateMatcher = WHOLE_COORDINATE_FORMAT.matcher(dataParseBuffer);
+	wholeCoordinateMatcher.find();
+	String nextDataPointString = dataParseBuffer.substring(wholeCoordinateMatcher.start(), wholeCoordinateMatcher.end());
+	dataParseBuffer = dataParseBuffer.substring(wholeCoordinateMatcher.end(), dataParseBuffer.length());
+	return nextDataPointString;
     }
 }

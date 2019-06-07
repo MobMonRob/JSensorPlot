@@ -15,20 +15,20 @@ public class FakeDataSource {
     private int position;
 
     public FakeDataSource() {
-        position = 0;
+	position = 0;
     }
 
     public String getNext() {
-        String ret;
+	String ret;
 
-        if (position + SensorDataPointParser.MAX_DATA_POINT_STRING_SIZE > SOURCE.length()) {
-            ret = SOURCE.substring(position, SOURCE.length());
-            position = 0;
-        } else {
-            ret = SOURCE.substring(position, position + SensorDataPointParser.MAX_DATA_POINT_STRING_SIZE);
-            position = position + SensorDataPointParser.MAX_DATA_POINT_STRING_SIZE;
-        }
+	if (position + SensorDataPointParser.MAX_DATA_POINT_STRING_SIZE > SOURCE.length()) {
+	    ret = SOURCE.substring(position, SOURCE.length());
+	    position = 0;
+	} else {
+	    ret = SOURCE.substring(position, position + SensorDataPointParser.MAX_DATA_POINT_STRING_SIZE);
+	    position = position + SensorDataPointParser.MAX_DATA_POINT_STRING_SIZE;
+	}
 
-        return ret;
+	return ret;
     }
 }
