@@ -30,7 +30,7 @@ public class GuiController {
     }
 
     public void setTimeWindowInSeconds(int timeWindowInSeconds) {
-	if (timeWindowInSeconds != 0) {
+	if (timeWindowInSeconds > 0) {
 	    plot.timeWindowInSeconds.setTimeWindow(timeWindowInSeconds);
 	}
     }
