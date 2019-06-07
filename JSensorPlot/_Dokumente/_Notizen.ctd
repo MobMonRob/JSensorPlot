@@ -200,7 +200,7 @@
 
 	</rich_text>
 	</node>
-	<node custom_icon_id="0" foreground="#ff0000" is_bold="True" name="Aktuell" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179378.83" ts_lastsave="1559902861.11" unique_id="3">
+	<node custom_icon_id="0" foreground="#ff0000" is_bold="True" name="Aktuell" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179378.83" ts_lastsave="1559905105.03" unique_id="3">
 		<rich_text>Helfen lassen, wenn etwas nicht funktioniert
 	    Fragen bei: Problem über 20 Minuten
 	    ____________________________
@@ -211,17 +211,13 @@
 		<rich_text>
 //GuiController als Fassade, die das Panel hat und Events handled und prüft: getTimeWindow(), getZoom(), getPanel(), Input: sensorDataProcessor, Input: Debug Mode
 
-(11:50-) Plot unabhängig von XChart machen
-
-	    Was geschieht mit DataPoints aus PlotWorker raus machen
-
-Chart bekomm dataPointCoordinatesList
+//Worker von Plot trennen
 	    
-alles private checken
+//alles private checken
 
-DataPointCoordinatesList und Plot auf höherer Ebene zusammen kleben
+ZoomPanel aus Plot raus?!
 
-	    Dokumentation
+Dokumentation
 
 	    
 

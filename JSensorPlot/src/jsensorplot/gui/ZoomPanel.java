@@ -5,6 +5,7 @@
  */
 package jsensorplot.gui;
 
+import jsensorplot.Zoom;
 import java.awt.Dimension;
 import org.knowm.xchart.XChartPanel;
 import org.knowm.xchart.XYChart;

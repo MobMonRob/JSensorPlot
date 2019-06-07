@@ -42,7 +42,7 @@ public class DataPointCoordinatesList extends Listenable<DataPointCoordinatesLis
 	relativeTimestamps = new ArrayList();
 	isValid = false;
 
-	this.addDataPoint(new DataPoint(0, 0, 0, 0, 0, 0, Date.from(Instant.now())));
+	this.addDataPoint(new DataPoint(0, 0, 0, 0, 0, 0, Date.from(Instant.now()))); //has at least one element
 
 	this.timeWindowInSeconds = timeWindowInSeconds;
 	this.timeWindowInSeconds.addChangeListener(window -> this.invalidate()); //not nice

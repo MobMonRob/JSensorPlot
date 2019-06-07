@@ -5,11 +5,8 @@
  */
 package jsensorplot.gui;
 
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Date;
+import jsensorplot.Zoom;
 import javax.swing.JPanel;
-import jsensorplot.DataPoint;
 import jsensorplot.DataPointCoordinatesList;
 import org.knowm.xchart.*;
 import org.knowm.xchart.style.XYStyler;
