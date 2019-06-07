@@ -16,12 +16,13 @@ public class JSensorPlotGui extends javax.swing.JFrame {
     private final SensorDataProcessor sensorDataProcessor;
     private final Plot plot;
     private final PlotWorker plotWorker;
+    private static final boolean DEBUG_MODE = true;
 
     /**
      * Creates new form JSensorPlotGui
      */
     public JSensorPlotGui() {
-	sensorDataProcessor = new SensorDataProcessor();
+	sensorDataProcessor = new SensorDataProcessor(DEBUG_MODE);
 	plot = new Plot();
 	plotWorker = new PlotWorker(sensorDataProcessor, plot);
 
