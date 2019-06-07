@@ -104,7 +104,7 @@
         <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSlider1StateChanged"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_allCodePost" type="java.lang.String" value="jSlider1.setValue(plot.timeWindowInSeconds.getTimeWindow());"/>
+        <AuxValue name="JavaCodeGenerator_allCodePost" type="java.lang.String" value="jSlider1.setValue(guiController.getTimeWindowInSeconds());"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JSlider" name="jSlider2">
@@ -118,7 +118,7 @@
         <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSlider2StateChanged"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_allCodePost" type="java.lang.String" value="jSlider2.setValue(plot.zoomPanel.zoom.getZoom());"/>
+        <AuxValue name="JavaCodeGenerator_allCodePost" type="java.lang.String" value="jSlider2.setValue(guiController.getZoom());"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JCheckBox" name="jCheckBox1">

@@ -34,11 +34,11 @@
 
     Example of inserting an obfuscator after compilation could look like this:
 
-        <target name="-post-compile">
-            <obfuscate>
-                <fileset dir="${build.classes.dir}"/>
-            </obfuscate>
-        </target>
+	<target name="-post-compile">
+	    <obfuscate>
+		<fileset dir="${build.classes.dir}"/>
+	    </obfuscate>
+	</target>
 
     For list of available properties check the imported 
     nbproject/build-impl.xml file. 
@@ -58,11 +58,11 @@
 
     An example of overriding the target for project execution could look like this:
 
-        <target name="run" depends="JSensorPlot-impl.jar">
-            <exec dir="bin" executable="launcher.exe">
-                <arg file="${dist.jar}"/>
-            </exec>
-        </target>
+	<target name="run" depends="JSensorPlot-impl.jar">
+	    <exec dir="bin" executable="launcher.exe">
+		<arg file="${dist.jar}"/>
+	    </exec>
+	</target>
 
     Notice that the overridden target depends on the jar target and not only on 
     the compile target as the regular run target does. Again, for a list of available 

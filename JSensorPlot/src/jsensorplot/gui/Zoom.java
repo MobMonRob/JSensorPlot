@@ -30,13 +30,8 @@ public class Zoom extends Listenable<Zoom> {
 	return this.zoom;
     }
 
-    public void enable() {
-	this.isEnabled = true;
-	super.changed();
-    }
-
-    public void disable() {
-	this.isEnabled = false;
+    public void setIsEnabled(boolean isEnabled) {
+	this.isEnabled = isEnabled;
 	super.changed();
     }
 

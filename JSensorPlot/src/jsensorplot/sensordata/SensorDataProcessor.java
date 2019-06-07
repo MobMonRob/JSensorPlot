@@ -27,9 +27,11 @@ public class SensorDataProcessor {
     private final SensorDataPointParser sensorDataPointParser;
 
     private final FakeDataSource fakeDataSource;
-    private static final boolean DEBUG = true;
+    private final boolean DEBUG_MODE;
 
-    public SensorDataProcessor() {
+    public SensorDataProcessor(boolean DEBUG_MODE) {
+	this.DEBUG_MODE = DEBUG_MODE;
+
 	dataReceiver = SensorDataReceiver.createStandardReceiver();
 
 	dataReaderBuffer = new char[SensorDataPointParser.MAX_DATA_POINT_STRING_SIZE];
@@ -41,7 +43,7 @@ public class SensorDataProcessor {
     }
 
     public void init() {
-	if (!DEBUG) {
+	if (!DEBUG_MODE) {
 	    dataReader = new BufferedReader(dataReceiver.connect());
 	    try {
 		Thread.sleep(20);
@@ -53,7 +55,7 @@ public class SensorDataProcessor {
 
     public DataPoint getNextDataPoint() {
 	if (!sensorDataPointParser.bufferIsFullEnough()) {
-	    if (DEBUG) {
+	    if (DEBUG_MODE) {
 		try {
 		    Thread.sleep(100);
 		    sensorDataPointParser.addToParseBuffer(fakeDataSource.getNext());

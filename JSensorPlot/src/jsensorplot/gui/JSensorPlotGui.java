@@ -5,35 +5,25 @@
  */
 package jsensorplot.gui;
 
-import jsensorplot.sensordata.SensorDataProcessor;
-
 /**
  *
  * @author MobMonRob
  */
 public class JSensorPlotGui extends javax.swing.JFrame {
 
-    private final SensorDataProcessor sensorDataProcessor;
-    private final Plot plot;
-    private final PlotWorker plotWorker;
+    private final GuiController guiController;
     private static final boolean DEBUG_MODE = true;
 
     /**
      * Creates new form JSensorPlotGui
      */
     public JSensorPlotGui() {
-	sensorDataProcessor = new SensorDataProcessor(DEBUG_MODE);
-	plot = new Plot();
-	plotWorker = new PlotWorker(sensorDataProcessor, plot);
+	guiController = new GuiController(DEBUG_MODE);
 
 	initComponents();
-	myInitComponents();
-    }
 
-    private void myInitComponents() {
-	jScrollPane1.setViewportView(plot.zoomPanel);
-	sensorDataProcessor.init();
-	plotWorker.execute();
+	jScrollPane1.setViewportView(guiController.getPanel());
+	guiController.init();
     }
 
     /**
@@ -109,16 +99,15 @@ public class JSensorPlotGui extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                .addComponent(jSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(130, 130, 130)
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2)
-                                .addGap(84, 84, 84)))
+                                .addComponent(jLabel2)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
@@ -149,30 +138,22 @@ public class JSensorPlotGui extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE))
         );
 
-        jSlider1.setValue(plot.timeWindowInSeconds.getTimeWindow());
-        jSlider2.setValue(plot.zoomPanel.zoom.getZoom());
+        jSlider1.setValue(guiController.getTimeWindowInSeconds());
+        jSlider2.setValue(guiController.getZoom());
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
-	int timeWindow = jSlider1.getValue();
-
-	if (timeWindow != 0) {
-	    plot.timeWindowInSeconds.setTimeWindow(timeWindow);
-	}
+	guiController.setTimeWindowInSeconds(jSlider1.getValue());
     }//GEN-LAST:event_jSlider1StateChanged
 
     private void jSlider2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider2StateChanged
-	plot.zoomPanel.zoom.setZoom(jSlider2.getValue());
+	guiController.setZoom(jSlider2.getValue());
     }//GEN-LAST:event_jSlider2StateChanged
 
     private void jCheckBox1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBox1StateChanged
-	if (jCheckBox1.isSelected()) {
-	    plot.zoomPanel.zoom.disable();
-	} else {
-	    plot.zoomPanel.zoom.enable();
-	}
+	guiController.setIsZoomEnabled(!jCheckBox1.isSelected());
     }//GEN-LAST:event_jCheckBox1StateChanged
 
     /**
