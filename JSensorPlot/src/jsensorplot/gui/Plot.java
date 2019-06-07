@@ -8,6 +8,7 @@ package jsensorplot.gui;
 import java.time.Instant;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JPanel;
 import jsensorplot.DataPoint;
 import jsensorplot.DataPointCoordinatesList;
 import jsensorplot.TimeWindowInSeconds;
@@ -21,18 +22,17 @@ import org.knowm.xchart.style.XYStyler;
 public class Plot {
 
     private final XYChart chart;
-    public final ZoomPanel zoomPanel;
+    private final ZoomPanel zoomPanel;
     private final DataPointCoordinatesList dataPointCoordinatesList;
-    public final TimeWindowInSeconds timeWindowInSeconds;
 
-    public Plot() {
-	timeWindowInSeconds = new TimeWindowInSeconds(20);
+    public Plot(TimeWindowInSeconds timeWindowInSeconds, Zoom zoom) {
 	dataPointCoordinatesList = new DataPointCoordinatesList(timeWindowInSeconds);
+
 	DataPoint dummyPoint = new DataPoint(0, 0, 0, 0, 0, 0, Date.from(Instant.now()));
 	dataPointCoordinatesList.addDataPoint(dummyPoint);
 
 	chart = initChart();
-	zoomPanel = new ZoomPanel(chart);
+	zoomPanel = new ZoomPanel(chart, zoom);
     }
 
     private XYChart initChart() {
@@ -59,16 +59,20 @@ public class Plot {
 
     public void addDataPoints(List<DataPoint> dataPoints) {
 	dataPointCoordinatesList.addDataPoints(dataPoints);
-	updateDataPointCoordinatesList();
+	updateFromDataPointCoordinatesList();
 	zoomPanel.repaint();
     }
 
-    private void updateDataPointCoordinatesList() {
+    private void updateFromDataPointCoordinatesList() {
 	chart.updateXYSeries("fx", dataPointCoordinatesList.getTimestamp(), dataPointCoordinatesList.getFx(), null);
 	chart.updateXYSeries("fy", dataPointCoordinatesList.getTimestamp(), dataPointCoordinatesList.getFy(), null);
 	chart.updateXYSeries("fz", dataPointCoordinatesList.getTimestamp(), dataPointCoordinatesList.getFz(), null);
 	chart.updateXYSeries("mx", dataPointCoordinatesList.getTimestamp(), dataPointCoordinatesList.getMx(), null);
 	chart.updateXYSeries("my", dataPointCoordinatesList.getTimestamp(), dataPointCoordinatesList.getMy(), null);
 	chart.updateXYSeries("mz", dataPointCoordinatesList.getTimestamp(), dataPointCoordinatesList.getMz(), null);
+    }
+
+    public JPanel getPanel() {
+	return zoomPanel;
     }
 }

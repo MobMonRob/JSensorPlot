@@ -15,11 +15,11 @@ import org.knowm.xchart.XYChart;
  */
 public class ZoomPanel extends XChartPanel {
 
-    public final Zoom zoom;
+    private final Zoom zoom;
 
-    public ZoomPanel(XYChart chart) {
+    public ZoomPanel(XYChart chart, Zoom zoom) {
 	super(chart);
-	zoom = new Zoom(0, true);
+	this.zoom = zoom;
 	zoom.addChangeListener(theZoom -> {
 	    this.invalidate();
 	    this.getParent().validate();

@@ -6,6 +6,7 @@
 package jsensorplot.gui;
 
 import javax.swing.JPanel;
+import jsensorplot.TimeWindowInSeconds;
 import jsensorplot.sensordata.SensorDataProcessor;
 
 /**
@@ -16,42 +17,49 @@ public class GuiController {
 
     private final SensorDataProcessor sensorDataProcessor;
     private final Plot plot;
-    private final PlotWorker plotWorker;
+    private final NextDataPointsWorker nextDataPointsWorker;
+
+    private final TimeWindowInSeconds timeWindowInSeconds;
+    private final Zoom zoom;
 
     public GuiController(boolean DEBUG_MODE) {
+	zoom = new Zoom(0, true);
+	timeWindowInSeconds = new TimeWindowInSeconds(20);
+
 	sensorDataProcessor = new SensorDataProcessor(DEBUG_MODE);
-	plot = new Plot();
-	plotWorker = new PlotWorker(sensorDataProcessor, plot);
+
+	plot = new Plot(timeWindowInSeconds, zoom);
+	nextDataPointsWorker = new NextDataPointsWorker(sensorDataProcessor, plot);
     }
 
     public void init() {
 	sensorDataProcessor.init();
-	plotWorker.execute();
+	nextDataPointsWorker.execute();
     }
 
-    public void setTimeWindowInSeconds(int timeWindowInSeconds) {
-	if (timeWindowInSeconds > 0) {
-	    plot.timeWindowInSeconds.setTimeWindow(timeWindowInSeconds);
+    public void setTimeWindowInSeconds(int timeWindow) {
+	if (timeWindow > 0) {
+	    timeWindowInSeconds.setTimeWindow(timeWindow);
 	}
     }
 
     public int getTimeWindowInSeconds() {
-	return plot.timeWindowInSeconds.getTimeWindow();
+	return timeWindowInSeconds.getTimeWindow();
     }
 
-    public void setZoom(int zoom) {
-	plot.zoomPanel.zoom.setZoom(zoom);
+    public void setZoom(int theZoom) {
+	zoom.setZoom(theZoom);
     }
 
     public int getZoom() {
-	return plot.zoomPanel.zoom.getZoom();
+	return zoom.getZoom();
     }
 
     public void setIsZoomEnabled(boolean isZoomEnabled) {
-	plot.zoomPanel.zoom.setIsEnabled(isZoomEnabled);
+	zoom.setIsEnabled(isZoomEnabled);
     }
 
     public JPanel getPanel() {
-	return plot.zoomPanel;
+	return plot.getPanel();
     }
 }
