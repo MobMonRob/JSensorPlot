@@ -17,7 +17,7 @@ import jsensorplot.util.Listenable;
  *
  * @author MobMonRob
  */
-public class DataPointCoordinatesList extends Listenable<DataPointCoordinatesList> {
+public class DataPointCoordinatesList {
 
     private final LinkedList<Double> fx;
     private final LinkedList<Double> fy;
@@ -93,7 +93,6 @@ public class DataPointCoordinatesList extends Listenable<DataPointCoordinatesLis
 
     public void invalidate() {
 	isValid = false;
-	super.changed();
     }
 
     private void shrinkListsToTimeWindow() {
@@ -142,7 +141,6 @@ public class DataPointCoordinatesList extends Listenable<DataPointCoordinatesLis
 
     public void addDataPoints(List<DataPoint> dataPoints) {
 	dataPoints.forEach(dataPoint -> addDataPoint(dataPoint));
-	super.changed();
     }
 
     private void addDataPoint(DataPoint dataPoint) {

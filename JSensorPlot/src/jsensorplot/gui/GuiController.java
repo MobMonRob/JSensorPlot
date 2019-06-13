@@ -31,7 +31,7 @@ public class GuiController {
 	dataPointCoordinatesList = new DataPointCoordinatesList(timeWindowInSeconds);
 	sensorDataProcessor = new SensorDataProcessor(DEBUG_MODE);
 	plot = new Plot(dataPointCoordinatesList, zoom);
-	nextDataPointsWorker = new NextDataPointsWorker(sensorDataProcessor, dataPointCoordinatesList);
+	nextDataPointsWorker = new NextDataPointsWorker(sensorDataProcessor, dataPointCoordinatesList, plot);
     }
 
     public void init() {

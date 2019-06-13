@@ -25,8 +25,6 @@ public class Plot {
 	this.dataPointCoordinatesList = dataPointCoordinatesList;
 	chart = initChart();
 	zoomPanel = new ZoomPanel(chart, zoom);
-
-	this.dataPointCoordinatesList.addChangeListener(list -> this.update());
     }
 
     private XYChart initChart() {
