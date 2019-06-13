@@ -45,8 +45,8 @@ public class Plot {
 	styler.setMarkerSize(0);
 	styler.setPlotContentSize(1.0);
 
-	styler.setYAxisMin(-110.0); // Problem: what is the interval of the data?
-	styler.setYAxisMax(110.0);
+	styler.setYAxisMin(-200.0); // Problem: what is the interval of the data?
+	styler.setYAxisMax(200.0);
 
 	return newChart;
     }

@@ -27,7 +27,7 @@ public class GuiController {
 
     public GuiController(boolean DEBUG_MODE) {
 	zoom = new Zoom(0, true);
-	timeWindowInSeconds = new TimeWindowInSeconds(20);
+	timeWindowInSeconds = new TimeWindowInSeconds(10);
 	dataPointCoordinatesList = new DataPointCoordinatesList(timeWindowInSeconds);
 	sensorDataProcessor = new SensorDataProcessor(DEBUG_MODE);
 	plot = new Plot(dataPointCoordinatesList, zoom);
