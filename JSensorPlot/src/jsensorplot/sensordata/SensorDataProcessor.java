@@ -8,40 +8,27 @@ package jsensorplot.sensordata;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.CharBuffer;
-import jsensorplot.DataPoint;
 
 /**
  *
  * @author MobMonRob
  */
-public class SensorDataProcessor implements DataPointSource {
+public class SensorDataProcessor implements DataPointSourceProvider {
 
     private final BufferedReader sensorDataReader;
 
     private final char[] dataReaderBuffer;
     private final CharBuffer dataConcatBuffer;
 
-    private final SensorDataPointParser sensorDataPointParser;
-
     public SensorDataProcessor(BufferedReader sensorDataReader) {
 	this.sensorDataReader = sensorDataReader;
 
 	dataReaderBuffer = new char[SensorDataPointParser.MAX_DATA_POINT_STRING_SIZE];
 	dataConcatBuffer = CharBuffer.allocate(SensorDataPointParser.MAX_DATA_POINT_STRING_SIZE * 3);
-
-	sensorDataPointParser = new SensorDataPointParser();
     }
 
     @Override
-    public DataPoint getNextDataPoint() {
-	if (!sensorDataPointParser.bufferIsFullEnough()) {
-	    sensorDataPointParser.addToParseBuffer(fetchNextDataPoint());
-	}
-
-	return sensorDataPointParser.parseNextDataPoint();
-    }
-
-    private String fetchNextDataPoint() {
+    public String nextDataPointString() {
 	dataConcatBuffer.clear();
 	int readCount = 0;
 

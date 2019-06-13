@@ -11,7 +11,21 @@ import jsensorplot.DataPoint;
  *
  * @author MobMonRob
  */
-public interface DataPointSource {
+public class DataPointSource {
 
-    public DataPoint getNextDataPoint();
+    private final DataPointSourceProvider dataPointSourceProvider;
+    private final SensorDataPointParser sensorDataPointParser;
+
+    public DataPointSource(DataPointSourceProvider dataPointSourceProvider) {
+	this.dataPointSourceProvider = dataPointSourceProvider;
+	sensorDataPointParser = new SensorDataPointParser();
+    }
+
+    public DataPoint getNextDataPoint() {
+	if (!sensorDataPointParser.isBufferFullEnough()) {
+	    sensorDataPointParser.addToParseBuffer(dataPointSourceProvider.nextDataPointString());
+	}
+
+	return sensorDataPointParser.parseNextDataPoint();
+    }
 }

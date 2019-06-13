@@ -12,6 +12,7 @@ import jsensorplot.Zoom;
 import javax.swing.JPanel;
 import jsensorplot.DataPointCoordinatesList;
 import jsensorplot.TimeWindowInSeconds;
+import jsensorplot.sensordata.DataPointSource;
 import jsensorplot.sensordata.FakeDataSource;
 import jsensorplot.sensordata.SensorDataProcessor;
 import jsensorplot.sensordata.SensorDataReceiver;
@@ -22,9 +23,7 @@ import jsensorplot.sensordata.SensorDataReceiver;
  */
 public class GuiController {
 
-    private BufferedReader sensorDataReader;
-    private final SensorDataReceiver sensorDataReceiver;
-    private SensorDataProcessor sensorDataProcessor;
+    private DataPointSource dataPointSource;
 
     private final Zoom zoom;
     private final TimeWindowInSeconds timeWindowInSeconds;
@@ -36,9 +35,7 @@ public class GuiController {
     private final boolean DEBUG_MODE;
 
     public GuiController(boolean DEBUG_MODE) {
-	sensorDataReceiver = SensorDataReceiver.createStandardReceiver();
-	sensorDataReader = null;
-	sensorDataProcessor = null;
+	dataPointSource = null;
 
 	zoom = new Zoom(0, true);
 	timeWindowInSeconds = new TimeWindowInSeconds(10);
@@ -51,20 +48,24 @@ public class GuiController {
     }
 
     public void init() {
-	if (!DEBUG_MODE) {
+	if (DEBUG_MODE) {
+	    dataPointSource = new DataPointSource(new FakeDataSource());
+
+	} else {
 	    try {
 		Thread.sleep(20);
 	    } catch (InterruptedException ex) {
 		Logger.getLogger(SensorDataProcessor.class.getName()).log(Level.SEVERE, null, ex);
 	    }
 
-	    sensorDataReader = new BufferedReader(sensorDataReceiver.connect());
-	    sensorDataProcessor = new SensorDataProcessor(sensorDataReader);
-	    nextDataPointsWorker = new NextDataPointsWorker(sensorDataProcessor, dataPointCoordinatesList, plot);
-	} else {
-	    nextDataPointsWorker = new NextDataPointsWorker(new FakeDataSource(), dataPointCoordinatesList, plot);
+	    SensorDataReceiver sensorDataReceiver = SensorDataReceiver.createStandardReceiver();
+	    BufferedReader sensorDataReader = new BufferedReader(sensorDataReceiver.connect());
+	    SensorDataProcessor sensorDataProcessor = new SensorDataProcessor(sensorDataReader);
+
+	    dataPointSource = new DataPointSource(sensorDataProcessor);
 	}
 
+	nextDataPointsWorker = new NextDataPointsWorker(dataPointSource, dataPointCoordinatesList, plot);
 	nextDataPointsWorker.execute();
     }
 

@@ -23,21 +23,22 @@ final public class SensorDataPointParser {
     public static final int MAX_DATA_POINT_STRING_SIZE = 83;
     private static final Pattern WHOLE_COORDINATE_FORMAT = Pattern.compile("\\(.+?\\)");
     private static final Pattern COORDINATE_FORMAT = Pattern.compile("-?[0-9]+.{1}[0-9]+");
+
     private String dataParseBuffer;
 
     public SensorDataPointParser() {
 	dataParseBuffer = "";
     }
 
-    public void addToParseBuffer(String appendage) {
-	dataParseBuffer = dataParseBuffer + appendage;
-    }
-
     public DataPoint parseNextDataPoint() {
 	return parseDataPoint(splitNextDataPointString(), Date.from(Instant.now()));
     }
 
-    public boolean bufferIsFullEnough() {
+    public void addToParseBuffer(String appendage) {
+	dataParseBuffer = dataParseBuffer + appendage;
+    }
+
+    public boolean isBufferFullEnough() {
 	return dataParseBuffer.length() >= SensorDataPointParser.MAX_DATA_POINT_STRING_SIZE;
     }
 
