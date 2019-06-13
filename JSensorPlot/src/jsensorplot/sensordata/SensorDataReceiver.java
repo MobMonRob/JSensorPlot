@@ -44,7 +44,7 @@ public class SensorDataReceiver {
 
 	try {
 	    InetSocketAddress inetSocketAdress = new InetSocketAddress(InetAddress.getByName(ipAdress), port);
-	    socket.connect(inetSocketAdress, 500); //with timeout
+	    socket.connect(inetSocketAdress, 1000); //with timeout
 	    socketReader = new InputStreamReader(socket.getInputStream());
 	} catch (SocketTimeoutException e) {
 	    System.err.println("Connection timed out!");
