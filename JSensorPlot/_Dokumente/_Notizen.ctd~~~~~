@@ -180,15 +180,15 @@
 	</rich_text>
 		<rich_text scale="h1" underline="single">Weitere Verbesserung</rich_text>
 		<rich_text>
-	    //GuiController als Fassade, die das Panel hat und Events handled und prüft: getTimeWindow(), getZoom(), getPanel(), Input: sensorDataProcessor, Input: Debug Mode
+//GuiController als Fassade, die das Panel hat und Events handled und prüft: getTimeWindow(), getZoom(), getPanel(), Input: sensorDataProcessor, Input: Debug Mode
 
-	    //Worker von Plot trennen
+//Worker von Plot trennen
 	    
-	    //alles private checken
+//alles private checken
 
-	</rich_text>
+</rich_text>
 	</node>
-	<node custom_icon_id="0" foreground="#ff0000" is_bold="True" name="Aktuell" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179378.83" ts_lastsave="1560415431.97" unique_id="3">
+	<node custom_icon_id="0" foreground="#ff0000" is_bold="True" name="Aktuell" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179378.83" ts_lastsave="1560415218.66" unique_id="3">
 		<rich_text>Helfen lassen, wenn etwas nicht funktioniert
 Fragen bei: Problem über 20 Minuten
 ____________________________
@@ -197,22 +197,24 @@ ____________________________
 </rich_text>
 		<rich_text scale="h1" underline="single">Weitere Verbesserung</rich_text>
 		<rich_text>
-	    (09:00) </rich_text>
+(09:00) </rich_text>
 		<rich_text foreground="#ffff00000000">Mit Roboter schauen, ob in Plot.java die minimalen und maximalen Werte passen.</rich_text>
 		<rich_text>
 
-	    (09:15) Performance verbessern (Chart, Parser)
-	    (09:15) Chart Update nicht so häufig
-	    (09:45) schnelleres Buffering bei CoordinatesList
+(09:15) Performance verbessern (Chart, Parser)
+	(09:15) Chart Update nicht so häufig
+	(09:45) schnelleres Buffering bei CoordinatesList
 
-	    (10:10) Dokumentation
+(10:10) Dokumentation
 
-	    Beschreibung in readme.md
+Zeit in Chart umdrehen
+	Datentyp String nehmen
 
-	    Zeit in Chart umdrehen
-	    Datentyp String nehmen
+Beschreibung in readme.md
 
-	</rich_text>
+Lizenz?
+
+</rich_text>
 	</node>
 	<node custom_icon_id="0" foreground="" is_bold="False" name="Künftig" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179385.33" ts_lastsave="1559818533.25" unique_id="4">
 		<rich_text scale="h2" underline="single">Weitere Plot API´s</rich_text>

@@ -188,13 +188,13 @@
 
 	</rich_text>
 	</node>
-	<node custom_icon_id="0" foreground="#ff0000" is_bold="True" name="Aktuell" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179378.83" ts_lastsave="1560415431.97" unique_id="3">
+	<node custom_icon_id="0" foreground="#ff0000" is_bold="True" name="Aktuell" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179378.83" ts_lastsave="1560415429.36" unique_id="3">
 		<rich_text>Helfen lassen, wenn etwas nicht funktioniert
 Fragen bei: Problem über 20 Minuten
 ____________________________
 
 
-</rich_text>
+	</rich_text>
 		<rich_text scale="h1" underline="single">Weitere Verbesserung</rich_text>
 		<rich_text>
 	    (09:00) </rich_text>
