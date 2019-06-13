@@ -38,7 +38,7 @@ public class ZoomPanel extends XChartPanel {
 	Dimension zoomedSize = parentSize;
 
 	if (zoom.isEnabled()) {
-	    zoomedSize = new Dimension(parentSize.width + zoom.getZoom() * 50, parentSize.height);
+	    zoomedSize = new Dimension(parentSize.width + zoom.getZoom() * 20, parentSize.height);
 	}
 
 	return zoomedSize;
