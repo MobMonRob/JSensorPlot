@@ -23,6 +23,8 @@ import jsensorplot.sensordata.SensorDataReceiver;
  */
 public class GuiController {
 
+    private final boolean DEBUG_MODE;
+
     private DataPointSource dataPointSource;
 
     private final Zoom zoom;
@@ -32,9 +34,9 @@ public class GuiController {
     private final Plot plot;
     private NextDataPointsWorker nextDataPointsWorker;
 
-    private final boolean DEBUG_MODE;
-
     public GuiController(boolean DEBUG_MODE) {
+	this.DEBUG_MODE = DEBUG_MODE;
+
 	dataPointSource = null;
 
 	zoom = new Zoom(0, true);
@@ -43,14 +45,11 @@ public class GuiController {
 
 	plot = new Plot(dataPointCoordinatesList, zoom);
 	nextDataPointsWorker = null;
-
-	this.DEBUG_MODE = DEBUG_MODE;
     }
 
     public void init() {
 	if (DEBUG_MODE) {
 	    dataPointSource = new DataPointSource(new FakeDataSource());
-
 	} else {
 	    try {
 		Thread.sleep(20);

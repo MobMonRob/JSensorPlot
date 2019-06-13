@@ -18,7 +18,7 @@ import jsensorplot.DataPoint;
  *
  * @author MobMonRob
  */
-final public class SensorDataPointParser {
+public class SensorDataPointParser {
 
     public static final int MAX_DATA_POINT_STRING_SIZE = 83;
     private static final Pattern WHOLE_COORDINATE_FORMAT = Pattern.compile("\\(.+?\\)");
@@ -39,7 +39,7 @@ final public class SensorDataPointParser {
     }
 
     public boolean isBufferFullEnough() {
-	return dataParseBuffer.length() >= SensorDataPointParser.MAX_DATA_POINT_STRING_SIZE;
+	return dataParseBuffer.length() >= MAX_DATA_POINT_STRING_SIZE;
     }
 
     private DataPoint parseDataPoint(String dataPointString, Date now) {
