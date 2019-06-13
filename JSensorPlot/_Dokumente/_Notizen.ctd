@@ -188,7 +188,7 @@
 
 </rich_text>
 	</node>
-	<node custom_icon_id="0" foreground="#ff0000" is_bold="True" name="Aktuell" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179378.83" ts_lastsave="1560410682.48" unique_id="3">
+	<node custom_icon_id="0" foreground="#ff0000" is_bold="True" name="Aktuell" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179378.83" ts_lastsave="1560411987.04" unique_id="3">
 		<rich_text>Helfen lassen, wenn etwas nicht funktioniert
 Fragen bei: Problem über 20 Minuten
 ____________________________
@@ -203,7 +203,7 @@ ____________________________
 
 (09:15) Performance verbessern (Chart, Parser)
 	(09:15) Chart Update nicht so häufig
-	besseres Buffering
+	(09:45) schnelleres Buffering bei CoordinatesList
 
 Dokumentation
 
