@@ -15,18 +15,12 @@ import java.net.*;
 public class SensorDataReceiver {
 
     //test: socat - TCP4:192.168.3.2:63351
-    public static final String SENSOR_IP_ADRESS = "192.168.3.2";
-    public static final int SENSOR_PORT = 63351;
+    private static final String SENSOR_IP_ADRESS = "192.168.3.2";
+    private static final int SENSOR_PORT = 63351;
 
     private final String ipAdress;
     private final int port;
     private Socket socket;
-
-    private SensorDataReceiver() {
-	this.ipAdress = SENSOR_IP_ADRESS;
-	this.port = SENSOR_PORT;
-	this.socket = new Socket();
-    }
 
     public SensorDataReceiver(String ipAdress, int port) {
 	this.ipAdress = ipAdress;
@@ -35,7 +29,7 @@ public class SensorDataReceiver {
     }
 
     public static SensorDataReceiver createStandardReceiver() {
-	return new SensorDataReceiver();
+	return new SensorDataReceiver(SENSOR_IP_ADRESS, SENSOR_PORT);
     }
 
     public InputStreamReader connect() {

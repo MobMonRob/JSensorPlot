@@ -8,8 +8,6 @@ package jsensorplot.sensordata;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.CharBuffer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import jsensorplot.DataPoint;
 
 /**
@@ -18,8 +16,7 @@ import jsensorplot.DataPoint;
  */
 public class SensorDataProcessor {
 
-    private final SensorDataReceiver dataReceiver;
-    private BufferedReader dataReader;
+    private final BufferedReader sensorDataReader;
 
     private final char[] dataReaderBuffer;
     private final CharBuffer dataConcatBuffer;
@@ -29,10 +26,9 @@ public class SensorDataProcessor {
     private final FakeDataSource fakeDataSource;
     private final boolean DEBUG_MODE;
 
-    public SensorDataProcessor(boolean DEBUG_MODE) {
+    public SensorDataProcessor(boolean DEBUG_MODE, BufferedReader sensorDataReader) {
 	this.DEBUG_MODE = DEBUG_MODE;
-
-	dataReceiver = SensorDataReceiver.createStandardReceiver();
+	this.sensorDataReader = sensorDataReader;
 
 	dataReaderBuffer = new char[SensorDataPointParser.MAX_DATA_POINT_STRING_SIZE];
 	dataConcatBuffer = CharBuffer.allocate(SensorDataPointParser.MAX_DATA_POINT_STRING_SIZE * 3);
@@ -40,17 +36,6 @@ public class SensorDataProcessor {
 	sensorDataPointParser = new SensorDataPointParser();
 
 	fakeDataSource = new FakeDataSource();
-    }
-
-    public void init() {
-	if (!DEBUG_MODE) {
-	    dataReader = new BufferedReader(dataReceiver.connect());
-	    try {
-		Thread.sleep(20);
-	    } catch (InterruptedException ex) {
-		Logger.getLogger(SensorDataProcessor.class.getName()).log(Level.SEVERE, null, ex);
-	    }
-	}
     }
 
     public DataPoint getNextDataPoint() {
@@ -76,11 +61,11 @@ public class SensorDataProcessor {
 
 	try {
 	    while (readCount < SensorDataPointParser.MAX_DATA_POINT_STRING_SIZE) {
-		while (!dataReader.ready()) {
+		while (!sensorDataReader.ready()) {
 		    Thread.sleep(40); //empirically tested optimal duration
 		}
 
-		int newCharactersReadCount = dataReader.read(dataReaderBuffer, 0, SensorDataPointParser.MAX_DATA_POINT_STRING_SIZE);
+		int newCharactersReadCount = sensorDataReader.read(dataReaderBuffer, 0, SensorDataPointParser.MAX_DATA_POINT_STRING_SIZE);
 
 		if (newCharactersReadCount < 1) {
 		    continue;

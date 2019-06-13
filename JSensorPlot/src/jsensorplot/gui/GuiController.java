@@ -5,11 +5,15 @@
  */
 package jsensorplot.gui;
 
+import java.io.BufferedReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import jsensorplot.Zoom;
 import javax.swing.JPanel;
 import jsensorplot.DataPointCoordinatesList;
 import jsensorplot.TimeWindowInSeconds;
 import jsensorplot.sensordata.SensorDataProcessor;
+import jsensorplot.sensordata.SensorDataReceiver;
 
 /**
  *
@@ -17,25 +21,47 @@ import jsensorplot.sensordata.SensorDataProcessor;
  */
 public class GuiController {
 
-    private final SensorDataProcessor sensorDataProcessor;
-    private final Plot plot;
-    private final NextDataPointsWorker nextDataPointsWorker;
+    private BufferedReader sensorDataReader;
+    private final SensorDataReceiver sensorDataReceiver;
+    private SensorDataProcessor sensorDataProcessor;
 
-    private final DataPointCoordinatesList dataPointCoordinatesList;
-    private final TimeWindowInSeconds timeWindowInSeconds;
     private final Zoom zoom;
+    private final TimeWindowInSeconds timeWindowInSeconds;
+    private final DataPointCoordinatesList dataPointCoordinatesList;
+
+    private final Plot plot;
+    private NextDataPointsWorker nextDataPointsWorker;
+
+    private final boolean DEBUG_MODE;
 
     public GuiController(boolean DEBUG_MODE) {
+	sensorDataReceiver = SensorDataReceiver.createStandardReceiver();
+	sensorDataReader = null;
+	sensorDataProcessor = null;
+
 	zoom = new Zoom(0, true);
 	timeWindowInSeconds = new TimeWindowInSeconds(10);
 	dataPointCoordinatesList = new DataPointCoordinatesList(timeWindowInSeconds);
-	sensorDataProcessor = new SensorDataProcessor(DEBUG_MODE);
+
 	plot = new Plot(dataPointCoordinatesList, zoom);
-	nextDataPointsWorker = new NextDataPointsWorker(sensorDataProcessor, dataPointCoordinatesList, plot);
+	nextDataPointsWorker = null;
+
+	this.DEBUG_MODE = DEBUG_MODE;
     }
 
     public void init() {
-	sensorDataProcessor.init();
+	if (!DEBUG_MODE) {
+	    sensorDataReader = new BufferedReader(sensorDataReceiver.connect());
+	    try {
+		Thread.sleep(20);
+	    } catch (InterruptedException ex) {
+		Logger.getLogger(SensorDataProcessor.class.getName()).log(Level.SEVERE, null, ex);
+	    }
+	}
+
+	sensorDataProcessor = new SensorDataProcessor(DEBUG_MODE, sensorDataReader);
+
+	nextDataPointsWorker = new NextDataPointsWorker(sensorDataProcessor, dataPointCoordinatesList, plot);
 	nextDataPointsWorker.execute();
     }
 
