@@ -9,7 +9,7 @@ import java.util.List;
 import javax.swing.SwingWorker;
 import jsensorplot.DataPoint;
 import jsensorplot.DataPointCoordinatesList;
-import jsensorplot.sensordata.SensorDataProcessor;
+import jsensorplot.sensordata.DataPointSource;
 
 /**
  *
@@ -17,13 +17,13 @@ import jsensorplot.sensordata.SensorDataProcessor;
  */
 public class NextDataPointsWorker extends SwingWorker<Boolean, DataPoint> {
 
-    private final SensorDataProcessor sensorDataProcessor;
+    private final DataPointSource dataPointSource;
     private final DataPointCoordinatesList dataPointCoordinatesList;
     private final Plot plot;
     private long lastUpdate;
 
-    public NextDataPointsWorker(SensorDataProcessor sensorDataProcessor, DataPointCoordinatesList dataPointCoordinatesList, Plot plot) {
-	this.sensorDataProcessor = sensorDataProcessor;
+    public NextDataPointsWorker(DataPointSource dataPointSource, DataPointCoordinatesList dataPointCoordinatesList, Plot plot) {
+	this.dataPointSource = dataPointSource;
 	this.dataPointCoordinatesList = dataPointCoordinatesList;
 	this.plot = plot;
 	this.lastUpdate = System.currentTimeMillis();
@@ -32,7 +32,7 @@ public class NextDataPointsWorker extends SwingWorker<Boolean, DataPoint> {
     @Override
     protected Boolean doInBackground() throws Exception {
 	while (!this.isCancelled()) {
-	    publish(sensorDataProcessor.getNextDataPoint());
+	    publish(dataPointSource.getNextDataPoint());
 	}
 
 	return true;

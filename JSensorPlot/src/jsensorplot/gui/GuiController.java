@@ -12,6 +12,7 @@ import jsensorplot.Zoom;
 import javax.swing.JPanel;
 import jsensorplot.DataPointCoordinatesList;
 import jsensorplot.TimeWindowInSeconds;
+import jsensorplot.sensordata.FakeDataSource;
 import jsensorplot.sensordata.SensorDataProcessor;
 import jsensorplot.sensordata.SensorDataReceiver;
 
@@ -51,17 +52,19 @@ public class GuiController {
 
     public void init() {
 	if (!DEBUG_MODE) {
-	    sensorDataReader = new BufferedReader(sensorDataReceiver.connect());
 	    try {
 		Thread.sleep(20);
 	    } catch (InterruptedException ex) {
 		Logger.getLogger(SensorDataProcessor.class.getName()).log(Level.SEVERE, null, ex);
 	    }
+
+	    sensorDataReader = new BufferedReader(sensorDataReceiver.connect());
+	    sensorDataProcessor = new SensorDataProcessor(sensorDataReader);
+	    nextDataPointsWorker = new NextDataPointsWorker(sensorDataProcessor, dataPointCoordinatesList, plot);
+	} else {
+	    nextDataPointsWorker = new NextDataPointsWorker(new FakeDataSource(), dataPointCoordinatesList, plot);
 	}
 
-	sensorDataProcessor = new SensorDataProcessor(DEBUG_MODE, sensorDataReader);
-
-	nextDataPointsWorker = new NextDataPointsWorker(sensorDataProcessor, dataPointCoordinatesList, plot);
 	nextDataPointsWorker.execute();
     }
 

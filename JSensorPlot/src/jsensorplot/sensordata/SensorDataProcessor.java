@@ -14,7 +14,7 @@ import jsensorplot.DataPoint;
  *
  * @author MobMonRob
  */
-public class SensorDataProcessor {
+public class SensorDataProcessor implements DataPointSource {
 
     private final BufferedReader sensorDataReader;
 
@@ -23,33 +23,19 @@ public class SensorDataProcessor {
 
     private final SensorDataPointParser sensorDataPointParser;
 
-    private final FakeDataSource fakeDataSource;
-    private final boolean DEBUG_MODE;
-
-    public SensorDataProcessor(boolean DEBUG_MODE, BufferedReader sensorDataReader) {
-	this.DEBUG_MODE = DEBUG_MODE;
+    public SensorDataProcessor(BufferedReader sensorDataReader) {
 	this.sensorDataReader = sensorDataReader;
 
 	dataReaderBuffer = new char[SensorDataPointParser.MAX_DATA_POINT_STRING_SIZE];
 	dataConcatBuffer = CharBuffer.allocate(SensorDataPointParser.MAX_DATA_POINT_STRING_SIZE * 3);
 
 	sensorDataPointParser = new SensorDataPointParser();
-
-	fakeDataSource = new FakeDataSource();
     }
 
+    @Override
     public DataPoint getNextDataPoint() {
 	if (!sensorDataPointParser.bufferIsFullEnough()) {
-	    if (DEBUG_MODE) {
-		try {
-		    Thread.sleep(100);
-		    sensorDataPointParser.addToParseBuffer(fakeDataSource.getNext());
-		} catch (InterruptedException e) {
-		    System.err.println("Interrupted while sleeping!");
-		}
-	    } else {
-		sensorDataPointParser.addToParseBuffer(fetchNextDataPoint());
-	    }
+	    sensorDataPointParser.addToParseBuffer(fetchNextDataPoint());
 	}
 
 	return sensorDataPointParser.parseNextDataPoint();
