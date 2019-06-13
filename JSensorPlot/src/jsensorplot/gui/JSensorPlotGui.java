@@ -12,7 +12,7 @@ package jsensorplot.gui;
 public class JSensorPlotGui extends javax.swing.JFrame {
 
     private final GuiController guiController;
-    private static final boolean DEBUG_MODE = false;
+    private static final boolean DEBUG_MODE = true; //fetch recordet data instead of data of the robot
 
     /**
      * Creates new form JSensorPlotGui
