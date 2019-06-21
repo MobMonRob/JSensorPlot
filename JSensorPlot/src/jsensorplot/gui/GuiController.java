@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import jsensorplot.DataPointCoordinatesList;
 import jsensorplot.TimeWindowInSeconds;
 import jsensorplot.sensordata.DataPointSource;
-import jsensorplot.sensordata.FakeDataSource;
+import jsensorplot.sensordata.DummyDataSource;
 import jsensorplot.sensordata.SensorDataProcessor;
 import jsensorplot.sensordata.SensorDataReceiver;
 
@@ -49,7 +49,7 @@ public class GuiController {
 
     public void init() {
 	if (DEBUG_MODE) {
-	    dataPointSource = new DataPointSource(new FakeDataSource());
+	    dataPointSource = new DataPointSource(new DummyDataSource());
 	} else {
 	    try {
 		Thread.sleep(20);

@@ -204,21 +204,43 @@
 
 	</rich_text>
     </node>
-    <node custom_icon_id="0" foreground="#ff0000" is_bold="True" name="Aktuell" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179378.83" ts_lastsave="1560423707.46" unique_id="3">
+    <node custom_icon_id="0" foreground="#ff0000" is_bold="True" name="Aktuell" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179378.83" ts_lastsave="1561104232.27" unique_id="3">
 	<rich_text>Helfen lassen, wenn etwas nicht funktioniert
 	    Fragen bei: Problem über 20 Minuten
 	    ____________________________
-
-
 	</rich_text>
 	<rich_text scale="h1" underline="single">Weitere Verbesserung</rich_text>
 	<rich_text>
-	    Zeit in Chart umdrehen
-	    Datentyp String nehmen
+	    (10:05-) FakeDataSource -&gt; DummyDataSource
+
+	    DataPointCoordinatesList -&gt; Map von einzelnne Zeitreihen
+
+
+
+
+
+
+
+
+
+
+
+	</rich_text>
+	<rich_text scale="h1" underline="single">Nächstes Projekt</rich_text>
+	<rich_text>
+	    Kamera: PoE -&gt; PoE Switch; Ansprechen? Linux Kamera Device -&gt;wahrscheinlich OpenCV Device
+
+	    Kamera: OpenCV Java API
+
+	    Erster Schritt: Kamera von Laptop auslesen
+
+	    GitHub neues Projekt?!
+
+	    Zubehör: Switch mit Stromversorgung, 2* Ethernet Patchkabel, Industriekamera
 
 	</rich_text>
     </node>
-    <node custom_icon_id="0" foreground="" is_bold="False" name="Künftig" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179385.33" ts_lastsave="1559818533.25" unique_id="4">
+    <node custom_icon_id="0" foreground="" is_bold="False" name="Künftig" prog_lang="custom-colors" readonly="False" tags="" ts_creation="1556179385.33" ts_lastsave="1561104079.59" unique_id="4">
 	<rich_text scale="h2" underline="single">Weitere Plot API´s</rich_text>
 	<rich_text>
 	    Trennung der verschiedenen Plot API´s auch visuell im Fenster.
@@ -240,6 +262,12 @@
 	    -&gt;Alles Prima: Datenpunkte schon, Timestamps nicht	
 	    -&gt;Sample Rate davon ableiten
 	    Löcher?
+
+	</rich_text>
+	<rich_text scale="h1" underline="single">Weitere Verbesserung</rich_text>
+	<rich_text>
+	    Zeit in Chart umdrehen
+	    Datentyp String nehmen
 
 	</rich_text>
     </node>
