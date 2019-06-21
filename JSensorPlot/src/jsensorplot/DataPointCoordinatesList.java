@@ -44,7 +44,7 @@ public class DataPointCoordinatesList {
 	this.addDataPoint(new DataPoint(0, 0, 0, 0, 0, 0, Date.from(Instant.now()))); //has at least one element
 
 	this.timeWindowInSeconds = timeWindowInSeconds;
-	this.timeWindowInSeconds.addChangeListener(window -> this.invalidate()); //not nice
+	this.timeWindowInSeconds.addChangeListener(window -> this.invalidate());
     }
 
     public List<Double> getFx() {
@@ -90,7 +90,7 @@ public class DataPointCoordinatesList {
 	}
     }
 
-    public void invalidate() {
+    private void invalidate() {
 	isValid = false;
     }
 
